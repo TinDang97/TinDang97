@@ -9,4 +9,4 @@ Looking at me on:
 
 And my [CV (résumé)](main.pdf)
 
-![Page 1](/main-1.png)![Page 2](/main-2.png)
+![Page 1](/main-1.png =250x)![Page 2](/main-2.png =250x)
