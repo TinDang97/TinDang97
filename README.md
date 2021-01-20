@@ -5,7 +5,7 @@
 Looking at me on:
 - [Facebook: TinDang97](https://www.facebook.com/TinDang97/)
 - [Linkedin: TinDang97](https://www.linkedin.com/in/tindang97/)
-- Gmail: rainstone1029x@gmail.com
+- Gmail: tindang.ht97@gmail.com
 
 And my [CV (résumé)](main.pdf)
 
