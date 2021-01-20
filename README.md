@@ -9,4 +9,4 @@ Looking at me on:
 
 And my [CV (résumé)](main.pdf)
 
-<img src="main-1.png" alt="drawing" width="35%"/><img src="main-2.png" alt="drawing" width="35%"/>
+<img src="main-1.png" alt="drawing" width="40%"/><img src="main-2.png" alt="drawing" width="40%"/>
