@@ -1,0 +1,334 @@
+%%%%%%%%%%%%%%%%%
+% This is an sample CV template created using altacv.cls
+% (v1.3, 10 May 2020) written by LianTze Lim (liantze@gmail.com). Now compiles with pdfLaTeX, XeLaTeX and LuaLaTeX.
+%
+%% It may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%    http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2003/12/01 or later.
+%%%%%%%%%%%%%%%%
+
+%% If you need to pass whatever options to xcolor
+\PassOptionsToPackage{dvipsnames}{xcolor}
+
+%% If you are using \orcid or academicons
+%% icons, make sure you have the academicons
+%% option here, and compile with XeLaTeX
+%% or LuaLaTeX.
+% \documentclass[10pt,a4paper,academicons]{altacv}
+
+%% Use the "normalphoto" option if you want a normal photo instead of cropped to a circle
+% \documentclass[10pt,a4paper,normalphoto]{altacv}
+
+\documentclass[10pt,a4paper,ragged2e,withhyper]{altacv}
+
+%% AltaCV uses the fontawesome5 and academicons fonts
+%% and packages.
+%% See http://texdoc.net/pkg/fontawesome5 and http://texdoc.net/pkg/academicons for full list of symbols. You MUST compile with XeLaTeX or LuaLaTeX if you want to use academicons.
+
+% Change the page layout if you need to
+\geometry{left=1.25cm,right=1.25cm,top=1.5cm,bottom=1.5cm,columnsep=1.2cm}
+
+% The paracol package lets you typeset columns of text in parallel
+\usepackage{paracol}
+\usepackage{ragged2e}
+\usepackage{xurl}
+
+
+% Change the font if you want to, depending on whether
+% you're using pdflatex or xelatex/lualatex
+\ifxetexorluatex
+  % If using xelatex or lualatex:
+  \setmainfont{Roboto Slab}
+  \setsansfont{Lato}
+  \renewcommand{\familydefault}{\sfdefault}
+\else
+  % If using pdflatex:
+  \usepackage[rm]{roboto}
+  \usepackage[defaultsans]{lato}
+  % \usepackage{sourcesanspro}
+  \renewcommand{\familydefault}{\sfdefault}
+\fi
+
+% Change the colours if you want to
+\definecolor{SlateGrey}{HTML}{2E2E2E}
+\definecolor{LightGrey}{HTML}{444444}
+\definecolor{DarkPastelRed}{HTML}{450808}
+\definecolor{PastelRed}{HTML}{8F0D0D}
+\definecolor{GoldenEarth}{HTML}{E7D192}
+\colorlet{name}{black}
+\colorlet{tagline}{PastelRed}
+\colorlet{heading}{DarkPastelRed}
+\colorlet{headingrule}{SlateGrey}
+\colorlet{subheading}{PastelRed}
+\colorlet{accent}{PastelRed}
+\colorlet{emphasis}{SlateGrey}
+\colorlet{body}{LightGrey}
+
+% Change some fonts, if necessary
+\renewcommand{\namefont}{\Huge\rmfamily\bfseries}
+\renewcommand{\personalinfofont}{\footnotesize}
+\renewcommand{\cvsectionfont}{\LARGE\rmfamily\bfseries}
+\renewcommand{\cvsubsectionfont}{\large\bfseries}
+
+
+% Change the bullets for itemize and rating marker
+% for \cvskill if you want to
+\renewcommand{\itemmarker}{{\small\textbullet}}
+\renewcommand{\ratingmarker}{\faCircle}
+
+
+%% sample.bib contains your publications
+\addbibresource{sample.bib}
+
+\begin{document}
+\name{Dang Huynh Trung Tin}
+\tagline{AI Engineer \& Python Developer}
+%% You can add multiple photos on the left or right
+\photoR{3.5cm}{avatar}
+% \photoL{2.5cm}{Yacht_High,Suitcase_High}
+
+\personalinfo{%
+  % Not all of these are required!
+  \email{tindang.ht97@gmail.com}
+  \phone{+84 937 684 229}
+  \location{Tan Phu, Ho Chi Minh City, Viet Nam}
+  \smallskip
+  
+  \printinfo{\faSkype}{TinDang}[https://join.skype.com/invite/byDrgbJlhR2N]
+  \linkedin{TinDang97}
+  \github{TinDang97}
+  \printinfo{\faFacebookSquare}{TinDang97}[https://www.facebook.com/TinDang97/]
+  %% You MUST add the academicons option to \documentclass, then compile with LuaLaTeX or XeLaTeX, if you want to use \orcid or other academicons commands.
+  % \orcid{0000-0000-0000-0000}
+  %% You can add your own arbtrary detail with
+  %% \printinfo{symbol}{detail}[optional hyperlink prefix]
+  % \printinfo{\faPaw}{Hey ho!}[https://example.com/]
+  %% Or you can declare your own field with
+  %% \NewInfoFiled{fieldname}{symbol}[optional hyperlink prefix] and use it:
+  % \NewInfoField{gitlab}{\faGitlab}[https://gitlab.com/]
+  % \gitlab{your_id}
+}
+
+
+\makecvheader
+%% Depending on your tastes, you may want to make fonts of itemize environments slightly smaller
+% \AtBeginEnvironment{itemize}{\small}
+
+%% Set the left/right column width ratio to 6:4.
+\columnratio{0.6}
+
+% Start a 2-column paracol. Both the left and right columns will automatically
+% break across pages if things get too long.
+\begin{paracol}{2}
+\bigskip
+
+\begin{quote}
+	``I only believe what things I understood. If not, make it clear.''
+\end{quote}
+
+\bigskip
+
+\begin{minipage}{\linewidth}
+\justifying
+Currently, I'm an AI engineer. I'm maintaining and deploying AI models as services. I'm very interested in new technologies and algorithms. I would be happy if I'm a distributor in the project that makes optimize things and open-source.
+\end{minipage}
+
+\smallskip
+
+\cvsection{Experience}
+
+\cvevent{AI Engineer}{Dai Phat Solutions Co., Ltd}{Aug 2019 -- Present}{Ho Chi Minh City, Vietnam}
+
+\begin{minipage}{\linewidth}
+\justifying
+\begin{itemize}
+	
+	\item Research and implement AI/ML (Computer Vision) algorithms.
+	\item Build and train models using \textit{PyTorch}. Processing array, and image. Performing models as application services for many tasks.
+	
+	\item Design and build a \textit{Distributed Computing System} using \textit{Message Queue System} \textit{(Apache Kafka, Apache Pulsar, ZeroMQ, etc.)}, In-Memory Database \textit{(Redis)} to cache large data, and \textit{Container Platform (Docker, Docker Compose)} for building up, scaling, and management applications in difference environments.
+	
+	\item Communicating the business's needs with the team to ensure the right product is created. 
+	\item Evaluating the needs of the project to determine which standards or tools are best for the project. 
+	\item Designing the project’s system, handle data workflow, check bugs and ensure the project can be handled in the future.
+	
+	\item Have experienced with other tools while developing projects:
+	\begin{itemize}
+		\renewcommand\labelitemii{--}
+		
+		\item \textit{FFmpeg} is a large suite of libraries and programs for handling video, audio, and other multimedia files and streams.
+		\item \textit{Blosc} is a high performance compressor optimized for binary data. It includes LZ4, SNAPPY, ZLIB, etc.
+		\item \textit{TurboJPEG} is a fast JPEG encoding library.
+	\end{itemize}
+\end{itemize}
+\end{minipage}
+
+\smallskip
+
+\divider
+
+\medskip 
+
+\cvevent{Intern \& Full-stack Software Developer}{LogiGear Corp.}{June 2018 -- Mar 2019}{Ho Chi Minh City, Vietnam}
+\begin{itemize}
+	
+\justifying
+\item Design and develop a web application for users can manage their wallets, contracts, and pools. It provides features for users to exchange transactions (trade, invest, etc.) in blockchain smart contracts via MetaMask to Ethereum Network.
+\item The professional web application was built by \textit{ReactJS, NodeJS, and ExpressJS}. The user interface was designed by \textit{Ant Design}. I also using some other tool like \textit{Bootstrap4, MongoDB, Axios, etc.}
+
+\end{itemize}
+
+
+\cvsection{Languages}
+\cvskill{Vietnamese}{5}
+
+\medskip
+
+\cvskill{English}{3}
+
+%% Switch to the right column. This will now automatically move to the second
+%% page if the content is too long.
+\switchcolumn
+
+\cvsection{Education}
+\cvevent{\textbf{High-Quality Bachelor's in Computer Science}}{Ton Duc Thang University}{2015--2019}{HCMC}
+\begin{itemize}
+	\item GPA: 3.2/4.0
+\end{itemize}
+\smallskip
+
+\cvsection{Certificates}
+
+\cvevent{\href{https://www.udemy.com/certificate/UC-ebf5e32a-f29c-4a1f-95cd-19222630e5f3/}{\textbf{Machine Learning A-Z™: Hands-On Python \& R In Data Science}}}{Kirill Eremenko, Hadelin de Ponteves, SuperDataScience Team on Udemy.}{Dec 2020}{HCMC}
+
+\divider
+
+\cvevent{\textbf{Agile Software Development with Scrum}}{Axon Active Vietnam Company.}{2017}{HCMC}
+%\cvachievement{\faTrophy}{Fantastic Achievement}{and some details about it}
+%
+%\divider
+%
+%\cvachievement{\faHeartbeat}{Another achievement}{more details about it of course}
+%
+%\divider
+%
+%\cvachievement{\faHeartbeat}{Another achievement}{more details about it of course}
+
+\cvsection{Skills}
+
+\begin{minipage}{\linewidth}
+	\cvtagstrong{Research}\cvtagstrong{Learning}\cvtagstrong{Problem-solving}\\
+	\cvtag{Hard-working}\cvtag{Critical thinking}\\
+	\cvtag{Responsibility}\cvtag{Analytical}\cvtag{Team work}
+\end{minipage}
+
+\medskip
+
+\divider
+
+\cvsubsection{Technical \& Tools}
+\begin{minipage}{\linewidth}
+	\cvtagstrong{Python}\cvtag{JavaScript}\cvtag{Java}\\
+	\cvtagstrong{Pytorch}\cvtagstrong{Numpy}\cvtagstrong{OpenCV}\\
+	\cvtag{Sklearn}\cvtag{Pandas}\cvtagstrong{Linux}\\
+	\cvtagstrong{Deep Learning}\cvtagstrong{Computer Vision}\\
+	\cvtagstrong{Message Queue}\cvtag{Apache Kafka}\cvtag{ZMQ}\\
+	\cvtagstrong{In-Memory Database}\cvtag{Redis}\\
+	\cvtagstrong{Docker}\cvtagstrong{Docker Compose}\cvtagstrong{VCS}\cvtagstrong{Distributed System}
+	\cvtagstrong{Similarity Search}\cvtagstrong{Search Engine}\cvtag{ElasticSearch}\cvtag{Faiss}\\
+	\cvtag{SQL}\cvtag{Document Database}\cvtag{Flask}\\
+	\cvtag{System Design}\cvtagstrong{FFmpeg}\cvtag{Data Crawler}\\
+	\cvtag{Network and Hardware Troubleshooting.}
+\end{minipage}
+\end{paracol}
+
+
+\cvsection{Projects}
+
+\cvproject{CameraAI}{AI Developer \& Software Architect}{Dai Phat Solutions}{https://dps.com.vn/san-pham.htm/products/doanhnghiep}
+\begin{minipage}{\linewidth}
+	\justifying
+	
+	The project has been implementing state-of-the-art models to improve CCTV security levels in the industry. It can make an alert when any abnormal activity in the security zone. The project's features are human detection, face recognition (recognize strangers and employees), human activity, and tracking multi-human location. Also, it can be adapting to large-scale, distributed, and high computing power. 
+\end{minipage}
+
+\medskip
+
+\divider
+
+\medskip
+
+\cvproject{MOWEDEPool}{Full-stack Developer}{LogiGear Corp.} {https://www.logigear.com/services/qa-testing-services/smart-contract-test-automation}
+\begin{minipage}{\linewidth}
+	\justifying
+	
+	MOWEDEPool secures your online investment with an approach that connects millions of crypto funders and wallets (e.g. bitcoin) and reduces the need for a middleman. Transparent smart contracts running on Ethereum set the requirements for contributors who join investing pools.
+	
+	Smart Contracts Work: We developed high-quality Ethereum smart contracts as pools that let users together invest with desired tokens or cryptocurrencies (e.g. bitcoin). We also provided a front-end application (web application) and management contracts that allows MOWEDE and users to manage their pools (e.g. private key). The deliverables include source code, test design, and scripts.
+\end{minipage}
+
+\medskip
+
+\divider
+
+\medskip
+
+
+\cvproject{Face Recognition}{Owner Project}{Tin Dang}{https://github.com/TinDang97/face_recognition}
+\begin{minipage}{\linewidth}
+\justifying
+Face Recognization is a personal project, which applies RetinaFace to detect faces. After that, I'm using the Insight Face model to create embedding from faces that have been split before.
+
+In the register section, all embedding vectors will be normalized and store in the pool.
+
+With the recognization section, faces detected will also normalized. The dot product of it with the pool above, which was used to find the nearest face.
+\end{minipage}
+
+\medskip
+
+\divider
+
+\medskip
+
+\cvproject{Real-Time Human Detection CCTV}{Owner Project}{Tin Dang}{https://github.com/TinDang97/Real-Time-Human-Detection}
+\begin{minipage}{\linewidth}
+\justifying
+Nowadays, CCTV used by any people at home, garage, front store,... and one of important feature is Security Mode at night. But it always alerts the user with anything motion. So the project's target is to upgrade the security mode of CCTV. I combine OpenCV Background Subtraction and Yolo-tiny methods to detect the human body in realtime. After detecting any motion on the screen, it only makes notify and record capture if any people detected.
+\end{minipage}
+
+\medskip
+
+\divider
+
+\medskip
+
+\cvproject{python-option}{Owner Project}{Tin Dang - Duy Huynh}{https://github.com/TinDang97/python-options}
+\begin{minipage}{\linewidth}
+	\justifying
+	Nowadays, CCTV used by any people at home, garage, front store,... and one of important feature is Security Mode at night. But it always alerts the user with anything motion. So the project's target is to upgrade the security mode of CCTV. I combine OpenCV Background Subtraction and Yolo-tiny methods to detect the human body in realtime. After detecting any motion on the screen, it only makes notify and record capture if any people detected.
+\end{minipage}
+
+\medskip
+
+\divider
+
+\medskip
+
+\cvproject{ffmpeg-py}{Owner Project}{Tin Dang}{https://github.com/TinDang97/ffmpeg-py}
+\begin{minipage}{\linewidth}
+	\justifying
+	ffmpeg-py is native python interface for FFmpeg and support data IO handle.
+	
+\end{minipage}
+
+\bigskip
+\begin{minipage}{\linewidth}
+	\centering
+	\textbf{\color{accent}--------}
+\end{minipage}
+	
+\end{document}
