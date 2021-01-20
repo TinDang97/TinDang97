@@ -7,4 +7,8 @@ Looking at me on:
 - [Linkedin: TinDang97](https://www.linkedin.com/in/tindang97/)
 - Gmail: rainstone1029x@gmail.com
 
-And my [CV (résumé)](tindang_cv.pdf)
+And my [CV (résumé)](main.pdf)
+
+![Page 1](/main-1.png)
+
+![Page 2](/main-2.png)
