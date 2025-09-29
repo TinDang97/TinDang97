@@ -29,11 +29,10 @@
 %% and packages.
 %% See http://texdoc.net/pkg/fontawesome5 and http://texdoc.net/pkg/academicons for full list of symbols. You MUST compile with XeLaTeX or LuaLaTeX if you want to use academicons.
 
-% Change the page layout if you need to
-\geometry{left=1.25cm,right=1.25cm,top=1.5cm,bottom=1.5cm,columnsep=1.2cm}
+% Change the page layout for single column MIT-style CV
+\geometry{left=1.5cm,right=1.5cm,top=1.5cm,bottom=1.5cm}
 
-% The paracol package lets you typeset columns of text in parallel
-\usepackage{paracol}
+% Packages for single column layout
 \usepackage{ragged2e}
 \usepackage{xurl}
 
@@ -85,341 +84,143 @@
 \addbibresource{sample.bib}
 
 \begin{document}
-\name{Dang Huynh Trung Tin}
-\tagline{Data Engineer}
-%% You can add multiple photos on the left or right
-\photoR{3.5cm}{avatar}
-% \photoL{2.5cm}{Yacht_High,Suitcase_High}
+\name{Tin Dang Huynh Trung}
+\tagline{Senior Software Engineer}
+\photoR{2.5cm}{avatar}
+% MIT-style CV without photo
 
 \personalinfo{%
-  % Not all of these are required!
   \email{tindang.ht97@gmail.com}
   \phone{+84 937 684 229}
   \location{Ho Chi Minh City, Viet Nam}
-  \smallskip
-
-  \printinfo{\faSkype}{TinDang}[https://join.skype.com/invite/byDrgbJlhR2N]
   \linkedin{TinDang97}
   \github{TinDang97}
-  \printinfo{\faFacebookSquare}{TinDang97}[https://www.facebook.com/TinDang97/]
-  %% You MUST add the academicons option to \documentclass, then compile with LuaLaTeX or XeLaTeX, if you want to use \orcid or other academicons commands.
-  % \orcid{0000-0000-0000-0000}
-  %% You can add your own arbtrary detail with
-  %% \printinfo{symbol}{detail}[optional hyperlink prefix]
-  % \printinfo{\faPaw}{Hey ho!}[https://example.com/]
-  %% Or you can declare your own field with
-  %% \NewInfoFiled{fieldname}{symbol}[optional hyperlink prefix] and use it:
-  % \NewInfoField{gitlab}{\faGitlab}[https://gitlab.com/]
-  % \gitlab{your_id}
 }
 
-
 \makecvheader
-%% Depending on your tastes, you may want to make fonts of itemize environments slightly smaller
-% \AtBeginEnvironment{itemize}{\small}
-
-%% Set the left/right column width ratio to 6:4.
-\columnratio{0.6}
-
-% Start a 2-column paracol. Both the left and right columns will automatically
-% break across pages if things get too long.
-\begin{paracol}{2}
-\bigskip
-
-\begin{quote}
-	``I just believed what things I understood. If not, make it clear.''
-\end{quote}
-
-\bigskip
 
 \begin{minipage}{\linewidth}
 \justifying
-As a Data Engineering, I am not just preparing data to make the report. I know how to make a story from data, solving the problems of the business base on collected data. So, I help business owners listen to their stories, and make consult with the best operators. 
+I'm a low-key developer, passionate about building innovative solutions that make a difference.
+
+Senior Software Engineer specializing in AI/ML Applications with 8+ years of experience designing and implementing enterprise-scale intelligent systems. Expert in full-stack development of AI-powered applications, microservices architecture, and scalable software solutions serving millions of users. Proven track record in leading engineering teams, delivering production-ready ML systems, and architecting robust software infrastructure. Deep expertise in modern software engineering practices, AI/ML frameworks, cloud-native development.
 \end{minipage}
 
-\smallskip
-
-\cvsection{Experience}
-
-\cvevent{Data Engineer / Senior Data Engineer}{Vietmoney Corp}{Mar 2021 -- Present | Fullt-time}{Ho Chi Minh City, Vietnam}
-
-\begin{minipage}{\linewidth}
-\justifying
-Viet Money is committed to providing fast and convenient financial solutions in the online trading environment. Now, getting a loan in cash is never easier than when you only connect to the internet to sign up to us, cash will be served right at home.
-\end{minipage}
-
-\medskip
-
-\begin{itemize}
-    \item Designed, built, and optimized data flow (\textbf{ETL}) effectively to business requirements.
-    \item Built, and designed a backend software project by \textbf{the C4 model}.
-    \item  Build a data analytics platform for analysts, data engineers, and scientists to uncover hidden patterns, correlations, and valuable business insights to improve strategic business.
-    \item  Designed and built \textbf{Asset Graph} containing \textbf{20000+ nodes} and \textbf{1m edges} implement \textbf{NetworkX, MongoDB, Redis} that representation of model attributes and posts. That makes a result finding all posts of the model in \textbf{0.5s}. The project target to represent features of similar products in the same brand or model.
-    \item  Built data pipeline on cloud based on \textbf{Google BigQuery, Google Cloud Storage, Google Dataproc, and Google Dataflow}, combine with data integration \textbf{Airbyte}, task scheduled by \textbf{Apache Airflow}.
-    \item  Prepare data for ML models and ad-hoc data requests of stakeholders by utilizing a range of technologies. Training and applying ML methods to improve business decisions.
-    \item  \textbf{Distributed Crawling System}: built and improve crawling system to collect data from second-hand E-commerce several websites with gain \textbf{2x performance} reach \textbf{1000+ pages/hour}, and built Admin page to manage services.
-    \item  Maintained and rebuilt \textbf{Anomaly Second-hand E-commerce price detection API service} improves \textbf{20\% accuracy} F1 score.
-    \item  Built an \textbf{Extract entities API service} trained in self-collected Vietnamese Second-hand E-commerce datasets, reach to 96\% F1 score.
-    \item  Maintained and built \textbf{Forecasting price of Second-hand E-commerce API service} handling \textbf{10000+ models}, and improved accuracy \textbf{by 15\% }at the better price to appraise the property.
-    \item  \textbf{Clustering Second-hand E-commerce post by the description} for ranking similar posts.
-    \item  Built web application for \textbf{Business Management Dashboards, Partner Analysis Dashboards, Second-Hand Product Trending Price}, etc. that availability for departments can access to view.
-\end{itemize}
-
-\bigskip
-
-\cvevent{Mentor}{Mindx Technology School}{May 2023 -- Present | Part-time}{Ho Chi Minh City, Vietnam}
-
-\begin{minipage}{\linewidth}
-\justifying
-As a Data Analysis mentor, I guide and support individuals interested in pursuing a career in data analysis. This involves sharing personal career experiences, inspiring and encouraging mentees, and providing a roadmap to success. In addition to sharing experience, the author also helps mentees develop the necessary technical skills to become successful data analysts, including teaching them how to explore data insights and use them to inform decision-making. Emotional support is also a critical aspect of mentoring, providing a supportive environment where mentees can discuss challenges and receive guidance and encouragement.
-\end{minipage}
-
-\bigskip
-
-\divider
-
-\cvevent{Visiting Lecturer}{Ton Duc Thang University}{Feb 2022 -- Jul 2022 | Contract}{Ho Chi Minh City, Vietnam}
-
-\begin{minipage}{\linewidth}
-\justifying
-As a visiting lecturer, I have taught students in TDTU how practicing to apply design patterns that are proven solutions to a common problem in the development project process. Another side, students have discussed tech life and coding experiences, etc.
-\end{minipage}
-
-\bigskip
-
-\divider
-
-\medskip 
-
-\cvevent{Data Scientist}{Dai Phat Solutions Co., Ltd}{Aug 2019 -- Mar 2021 | Full-time}{Ho Chi Minh City, Vietnam}
-
-\begin{minipage}{\linewidth}
-\justifying
-    Dai Phat Solutions is a unit operating in the field of Information Technology, providing Operational Management solutions for all types of businesses from standard to specialized.
-\end{minipage}
-\medskip
-\begin{itemize}
-	\item Research, design and maintain AI/ML projects as services.
-	\item Make PoC apply \textbf{Object tracking} to improve security area by CCTV
-	\item Optimizing process video and image with FFMPEG Library for Computer Vision real-time inference.
-	\item Designed \& Built \textbf{Security Camera AI} based on distributed system design for scale-up, fault-tolerant, reliability, and availability. It can process and stream video frames to monitor web pages at \textbf{15 fps/s per camera} for \textbf{Human detection}, \textbf{Object tracking}, and \textbf{Face Recognition}. That is available to process multiple cameras. \textbf{Face Recognition has accuracy at 92\% - face space of up to 1000+.}
-	\item Maintained and built \textbf{Face Recognition Project} became checking employees in large industries with optimizing infrastructure.
-\end{itemize}
-
-\smallskip
-
-\divider
-
-\medskip 
-
-%% Switch to the right column. This will now automatically move to the second
-%% page if the content is too long.
-\switchcolumn
-
+% Education Section (MIT format places education prominently)
 \cvsection{Education}
-\cvevent{\textbf{High-Quality Bachelor's in Computer Science}}{Ton Duc Thang University}{2015--2019}{HCMC}
+\cvevent{\textbf{Bachelor of Computer Science (High-Quality Program)}}{Ton Duc Thang University}{2015--2019}{Ho Chi Minh City, Vietnam}
 \begin{itemize}
-	\item College graduation ratings: Very good
+	\item Graduation Rating: Very Good
+	\item Relevant Coursework: Data Structures, Algorithms, Database Systems, Machine Learning
 \end{itemize}
-\smallskip
 
- \cvsection{Certificates}
+\cvsection{Professional Experience}
 
-\cvevent{\href{https://s3-us-west-2.amazonaws.com/udacity-printer/production/certificates/0ad10fbf-13db-4f96-b196-a108e3bff2b2.pdf}{\textbf{AWS Machine Learning Foundations}}}{ Udacity }{August 2022}{}
-\divider
+\cvevent{Technical Lead - AI Chat Platform Architecture}{ClickAI Viet Nam}{Jun 2024 -- Present | Full-time}{Ho Chi Minh City, Vietnam}
 
-\cvevent{\href{https://www.udemy.com/certificate/UC-616cd37f-7479-46fa-9ae3-026e6676df09/}{\textbf{Data Analytics A-Z with Python}}}{ Yaswanth Sai Palaghat }{Dec 2020}{}
-\divider
-
-\cvevent{\href{https://www.udemy.com/certificate/UC-ebf5e32a-f29c-4a1f-95cd-19222630e5f3/}{\textbf{Machine Learning A-Z™: Hands-On Python \& R In Data Science}}}{Kirill Eremenko, Hadelin de Ponteves, Ligency I Team, SuperDataScience Support, Ligency Team }{Dec 2020}{}
-
-\divider
-
-\cvevent{\href{https://www.udemy.com/certificate/UC-ebf5e32a-f29c-4a1f-95cd-19222630e5f3/}{\textbf{Computer Vision with Python}}}{ Code Warriors, Kaustubh Tripathi}{ May 2022 }{}
-
-\divider
-
-\cvevent{\textbf{Agile Software Development with Scrum}}{Axon Active Vietnam Company.}{2017}{HCMC}
-
-\cvsection{Languages}
-
-\cvskill{English}{3}
-
-\break
-
-\cvsection{Skills}
-\begin{minipage}{\linewidth}
-	\cvtagstrong{Research}\cvtagstrong{Self Learning}\cvtagstrong{Problem-solving}
-	\cvtag{Critical thinking}\cvtagstrong{Scrum}\cvtagstrong{Agiles Development}\cvtagstrong{JIRA}
-	\cvtag{Responsibility}\cvtag{Analytical}\cvtag{Team work}\cvtag{System Design}\cvtag{Data Storytelling}
-\end{minipage}
-
-\medskip
-
-\divider
-
-\bigskip
-\cvsubsection{Data Tools \& Big Data \& Scripts}
-\begin{minipage}{\linewidth}
-        \cvtagstrong{Python}\cvtag{Java}\cvtag{Golang}\cvtag{Shell}\cvtag{SQL}\\
-        \cvtagstrong{PySpark}\cvtagstrong{Pandas}\cvtag{Polar}\cvtag{Hadoop}\\
-        \cvtagstrong{Pytorch}\cvtagstrong{TensorFlow}\cvtag{Numpy}\cvtag{PyArrow}
-        \cvtag{Sklearn}\cvtag{Data Brick}\cvtag{DuckDB}\cvtag{Parquet}\cvtag{HDFS}
-	\cvtagstrong{Google BigQuery}\cvtag{DeltaLake}\cvtag{Airbyte}\cvtag{InfluxDB}\cvtagstrong{Apache Airflow}
- \cvtagstrong{Streamlit}\cvtagstrong{Apache Kafka}\cvtagstrong{Google Pub/Sub}\cvtag{Plotly}\cvtag{Google Cloud Storage}\cvtag{DataProc}\cvtag{DataFlow}
-\end{minipage}
-
-\medskip
-\cvsubsection{Deployments \& Platforms}
-\begin{minipage}{\linewidth}
-	\cvtag{Linux}\cvtag{MacOS}\cvtagstrong{Docker}\cvtagstrong{Docker Compose}\cvtagstrong{Kubernetes}\cvtag{Helm}\cvtagstrong{Google Cloud Platform}\cvtagstrong{PowerBI}\cvtagstrong{Git}\cvtagstrong{Github}
-\end{minipage}
-
-\medskip
-\cvsubsection{Web Development \& Databases}
-\begin{minipage}{\linewidth}
-	\cvtagstrong{Python}\cvtagstrong{FastAPI}\cvtagstrong{RESTFulAPI}\cvtag{Flask}\cvtag{Django}\cvtag{ElasticSearch}
-        \cvtag{Redis}\cvtag{TigerGraph}\cvtag{MongoDB}\cvtagstrong{gRPC}\cvtagstrong{Postgres}\cvtagstrong{MySQL}
-\end{minipage}
-
-\medskip
-\cvsubsection{Technical \& Tools}
-\begin{minipage}{\linewidth}
-	\cvtagstrong{Object-oriented programming}\cvtag{Google Cloud Storage}\cvtag{Postman}\cvtag{Swagger}
-	\cvtag{Machine Learning}\cvtag{Computer Vision}\cvtag{OpenCV}\cvtag{MapReduce}
-	\cvtag{Search Engine}\cvtag{FAISS}\cvtag{Big Data}\cvtag{Google Cloud Platform}\cvtag{NoSQL}\cvtag{NLP}\cvtag{Selenium}\cvtag{Scrapy}\cvtagstrong{PyCharm}\cvtagstrong{VSCode}\cvtag{...}
-\end{minipage}
-\end{paracol}
-
-\break
-\cvsection{Projects}
-\cvproject{Forecasting secondhand product price service}{Developer}{Vietmoney Corp}{}
-\begin{minipage}{\linewidth}
-	\justifying
-	Forecasting secondhand e-commerce price service that help business operators make decisions to control inventory.
-	
-	\textit{\textbf{Python, SKLearn, Pytorch, Bert, Prophet, Faiss...}}
-	
-\end{minipage}
-
-\medskip
-
-\divider
-
-\cvproject{Applied DL/ML For Anomaly Sale Detection}{Developer}{Vietmoney Corp}{}
-\begin{minipage}{\linewidth}
-	\justifying
-	Multiple projects stacking to process anomaly sale articles for improving the performance of appraisal service.
-	
-	\textit{\textbf{Python, SKLearn, Pytorch, Bert...}}
-	
-\end{minipage}
-
-\medskip
-
-\divider
-
-\cvproject{Named Entity Recognition for Vietnamese Secondhand E-commerce}{Developer}{Vietmoney Corp}{}
-\begin{minipage}{\linewidth}
-	\justifying
-	Applying Named-Entity Recognize model for Vietnamese second-hand trade news.
-	
-	\textit{\textbf{Python, Pytorch, Bert...}}
-	
-\end{minipage}
-
-\divider
-
-\medskip
-\cvproject{Face Anti Spoofing}{Developer}{Vietmoney Corp.}{https://github.com/vietmoney/face-anti-spoofing}
-\begin{minipage}{\linewidth}
-	\justifying
-	Pure Python - Face detection \& anti-spoofing. Support Web API \& Command-line interface.
-	
-	\textit{\textbf{Python, Pytorch, FastAPI, python-click, ...}}
-	
-\end{minipage}
-
-\divider
-
-\medskip
-\cvproject{Distributed Crawling System}{Developer}{Vietmoney Corp.}{https://gambaru.io/en/blog/distributed-crawling-system-la-gi}
-\begin{minipage}{\linewidth}
-	\justifying
-	Crawling E-commerce product data from variate web sources by a distributed system.
-	
-	\textit{\textbf{Python, Scrapy, Splash, Google PubSub, Google Cloud Services, JMESpath, FastAPI, Mongo, Kubernetes, Pydantic,...}}
-	
-\end{minipage}
-
-\medskip
-
-\divider
-
-\medskip
-
-\cvproject{CameraAI}{Data Scientist \& Project Architect}{Dai Phat Solutions}{https://dps.com.vn/san-pham.htm/products/doanhnghiep}
-\begin{minipage}{\linewidth}
-	\justifying
-	
-	The project has been implementing state-of-the-art models to improve CCTV security levels in the industry. It can make an alert when any abnormal activity in the security zone. The project's features are human detection, face recognition (recognizing strangers and employees), human activity, and tracking multi-human locations. Also, it can be adapted to large-scale, distributed, and high computing power.
-	\smallskip
-	It's built fit with business logic.
-	
-	\textit{\textbf{Python, Pytorch, RetinaFace, InsightFace, Apache Kafka, Redis, Numpy, OpenCV, Dlib, Docker, Faiss, FFmpeg, PostgreSQL, ZMQ, Blosc, TurboJPEG, Socket.io}}
-\end{minipage}
-
-\medskip
-
-\divider
-
-\medskip
-
-
-\cvproject{Face Recognition}{Project Owner}{Tin Dang}{https://github.com/TinDang97/face_recognition}
 \begin{minipage}{\linewidth}
 \justifying
-The project is a simple face recognition tool, which combines state-of-the-art Computer Vision Model in Face Detection, Face Embedding.
-\smallskip
-
-\textit{\textbf{Python, Pytorch, Numpy, OpenCV, RetinaFace, InsightFace}}
+Leading AI startup \href{http://clickai.vn}{ClickAI VN} specializing in comprehensive conversational AI platform with multi-modal capabilities, serving \textbf{40K+ active users} across Southeast Asia with enterprise-grade chat solutions & Community.
 \end{minipage}
 
 \medskip
 
+\begin{itemize}
+    \item \textbf{Architected enterprise AI Chat Platform from ground-up} integrating \textbf{15+ LLM providers} with intelligent routing, load balancing, and failover mechanisms, supporting \textbf{multi-modal conversations} (text, image, video, audio, document analysis) and achieving \textbf{40K+ users in 4 months}
+    
+    \item \textbf{Engineered high-performance chat infrastructure} using \textbf{FastAPI microservices, LangChain orchestration} deployed on \textbf{Kubernetes auto-scaling clusters}, delivering \textbf{sub-2s response times}, \textbf{99.9\% uptime}, and processing \textbf{1K+ concurrent chat sessions} with intelligent conversation management and context preservation
+    
+    \item \textbf{Developed Advanced RAG Chat System} with \textbf{vector databases (Weaviate, Qdrant)}, implementing semantic search, document chunking strategies, and citation tracking for enterprise knowledge bases, enabling \textbf{95\% accuracy} in document-based Q\&A and reducing information retrieval time by \textbf{80\%}
+    
+    \item \textbf{Implemented Intelligent Chat Routing \& Optimization} using custom algorithms for model selection based on query complexity, cost optimization, and performance metrics, reducing API costs by \textbf{40\%} while maintaining quality through A/B testing and automated model performance monitoring
+    
+    \item \textbf{Developed Enterprise Chat Framework} with user authentication, role-based access control, content filtering, ensuring secure conversations with audit trails and data privacy controls
+    
+    \item \textbf{Led cross-functional AI Platform team of 8 engineers} (Backend, Frontend, DevOps, ML), establishing agile development practices, code review standards, automated testing (95\% coverage), and deployment pipelines, accelerating feature delivery by \textbf{300\%} and maintaining zero-downtime releases
+\end{itemize}
+
 \divider
 
-\medskip
+\cvevent{Senior Software Engineer}{Trustify Technology}{Jan 2024 -- Mar 2025 | Full-time}{Ho Chi Minh City, Vietnam}
 
-\cvproject{Real-Time Human Detection CCTV}{Project Owner - \textit{"Arctic Code Vault Contributor
- - by GitHub"} }{Tin Dang}{https://github.com/TinDang97/Real-Time-Human-Detection}
 \begin{minipage}{\linewidth}
 \justifying
-Nowadays, CCTV is used by people at home, in garages, and front stores,... and one of the important features is Motion Detection at night. That improved by detecting humans in the frame in real-time.
+Technology consulting firm specializing in enterprise software solutions and AI/ML App integration.
+\end{minipage}
+
+\medskip
+
+\begin{itemize}
+    \item \textbf{Architected enterprise-grade software systems} serving \textbf{50K+ concurrent users} using \textbf{Python, Node.js} with microservices architecture, implementing CQRS pattern and event sourcing, achieving \textbf{sub-200ms API response times} and \textbf{99.95\% availability} on \textbf{Azure Kubernetes Service}
+    
+    \item \textbf{Developed AI-powered software applications} integrating machine learning models into production systems, implementing ML pipelines with automated training, testing, and deployment, improving business decision accuracy by \textbf{35\%} across 10+ enterprise clients
+    
+    \item \textbf{Led software engineering team of 6 developers}, implementing \textbf{Agile/Scrum methodologies}, code review processes, and automated testing frameworks, establishing software quality metrics that resulted in \textbf{40\% faster delivery cycles} and \textbf{95\% code coverage}
+    
+    \item \textbf{Designed scalable API architecture} with GraphQL and RESTful services, implemented database optimization strategies using indexing and query optimization, reducing response time by \textbf{60\%} and supporting \textbf{10M+ daily transactions}
+    
+    \item \textbf{Mentored 15+ software engineers} in clean code principles, software architecture patterns, AI/ML integration techniques, and modern development practices, achieving \textbf{90\% team satisfaction} and \textbf{100\% retention rate}
+\end{itemize}
+
+\cvsubsection{Previous Experience (2019-2023)}
+
+\cvevent{Senior Data Engineer}{Asia Commercial Bank - ACB}{Aug 2023 -- Jun 2024}{}
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+    \item Architected enterprise data lake on Cloudera ecosystem processing 5M+ daily transactions with 99.9\% accuracy
+    \item Built automated data quality frameworks using Apache Spark, reducing manual verification by 80\%
+    \item Developed FastAPI-based RESTful APIs serving 100+ internal banking applications
+\end{itemize}
+
 \smallskip
 
-\textit{\textbf{Python, Yolov3, OpenCV}}
-\end{minipage}
+\cvevent{Software Data Engineer}{Vietmoney Corp}{Mar 2021 -- Aug 2023}{}
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+    \item Developed enterprise fintech platform processing 10M+ daily transactions on GCP with 99.9\% uptime
+    \item Built ML applications: price forecasting (96\% accuracy), Vietnamese NER (96\% F1), graph-based systems (20K+ nodes)
+    \item Architected distributed web scraping achieving 2x performance (1,000+ pages/hour) across 50+ platforms
+\end{itemize}
+
+\smallskip
+
+\cvevent{Data Scientist}{Dai Phat Solutions}{Aug 2019 -- Mar 2021}{}
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+    \item Built enterprise Security Camera AI system (15 FPS processing) serving 20+ clients, reducing incidents by 40\%
+    \item Developed face recognition system (92\% accuracy) for 1,000+ employee database, reducing manual processing by 90\%
+\end{itemize}
+
+\smallskip
+
+\textbf{Teaching \& Mentoring:} Data Analysis Mentor at Mindx Technology School (2023-Present), Visiting Lecturer at Ton Duc Thang University (2022)
+
+
+\cvsection{Technical Skills}
+
+\textbf{Programming:} \cvtagstrong{Python} \cvtagstrong{JavaScript/TypeScript} \cvtagstrong{Node.js} \cvtag{Java} \cvtag{Golang} \cvtagstrong{SQL} \cvtag{Shell/Bash}
+
+\smallskip
+\textbf{AI/ML:} \cvtagstrong{PyTorch} \cvtagstrong{TensorFlow} \cvtagstrong{LangChain} \cvtagstrong{vLLM} \cvtagstrong{Scikit-learn} \cvtagstrong{OpenCV} \cvtagstrong{Transformers} \cvtagstrong{RAG}
+
+\smallskip
+\textbf{Web \& APIs:} \cvtagstrong{FastAPI} \cvtagstrong{Flask} \cvtagstrong{Django} \cvtagstrong{React} \cvtagstrong{Next.js} \cvtagstrong{RESTful APIs} \cvtagstrong{Microservices}
+
+\smallskip
+\textbf{DevOps \& Cloud:} \cvtagstrong{Docker} \cvtagstrong{Kubernetes} \cvtagstrong{CI/CD} \cvtagstrong{Google Cloud Platform} \cvtagstrong{Microsoft Azure} \cvtagstrong{Prometheus}
+
+\smallskip
+\textbf{Databases:} \cvtagstrong{PostgreSQL} \cvtagstrong{MySQL} \cvtagstrong{MongoDB} \cvtagstrong{Redis} \cvtagstrong{Weaviate} \cvtagstrong{Qdrant} \cvtagstrong{Google BigQuery}
 
 \medskip
 
-\divider
+\cvsection{Certifications \& Languages}
 
-\medskip
+\textbf{Professional Certifications:}
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+    \item \href{https://www.credential.net/f16b9afc-1d7a-4427-b7e3-f0bf76cd75ae}{Google Cloud Technical Series - AI Agents edition} (Google Cloud, 2025)
+    \item \href{https://s3-us-west-2.amazonaws.com/udacity-printer/production/certificates/0ad10fbf-13db-4f96-b196-a108e3bff2b2.pdf}{AWS Machine Learning Foundations} (Udacity, 2022)
+    \item Agile Software Development with Scrum (Axon Active Vietnam, 2017)
+\end{itemize}
 
-\cvproject{ffmpeg-py}{Project Owner}{Tin Dang}{https://github.com/TinDang97/ffmpeg-py}
-\begin{minipage}{\linewidth}
-	\justifying
-	ffmpeg-py is a native Python interface for FFmpeg and supports data IO handle.
-	\smallskip
-	
-	\textit{\textbf{Python, FFmpeg}}
-\end{minipage}
+\smallskip
+\textbf{Languages:} English (Professional), Vietnamese (Native)
 
-\bigskip
-\begin{minipage}{\linewidth}
-	\centering
-	\textbf{\color{accent}--------}
-\end{minipage}
-	
 \end{document}
