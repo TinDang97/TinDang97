@@ -15,41 +15,6 @@
 [![GitHub stars](https://img.shields.io/github/stars/TinDang97?affiliations=OWNER&style=flat&logo=github)](https://github.com/TinDang97?tab=repositories)
  [LinkedIn](https://www.linkedin.com/in/tindang97/) · [GitHub](https://github.com/TinDang97) · [Email](mailto:tindang.ht97@gmail.com) · [Tel](tel:+84937684229)
 
-## Professional Experience
-
-### **Technical Lead** — AI Chat Platform Architecture · **ClickAI Viet Nam**
-
-Jun 2024 – Present · Ho Chi Minh City, Vietnam · Contract & Full-time
-
-Leading ClickAI VN, a conversational AI platform with multi‑modal capabilities serving 40K+ active users in SEA.
-
-- Architected an enterprise AI Chat Platform end-to-end integrating 15+ LLM providers with intelligent routing, load balancing, and failover; supported multi‑modal conversations (text, image, audio, video, docs)
-- Built real-time web client with Next.js 14, shadcn/ui, and streaming via SSE; Edge middleware for auth/rate limits; organization workspaces, RBAC, audit trails, and monetization
-- Engineered high‑performance chat infrastructure with FastAPI orchestrated by LangChain, deployed to Kubernetes (Azure AKS & VNetwork Cloud); delivered sub‑2s responses, 99.9% uptime, 1K+ concurrent sessions
-- Advanced RAG with Weaviate/Qdrant, hybrid search, chunking, citation tracking; Knowledge Graphs via Graphiti + FalkorDB; 80% faster retrieval
-- Intelligent routing & cost optimization with policy-based model selection, A/B tests, and monitoring; reduced API spend by 40% while preserving quality
-- Led a cross‑functional team of 5; Agile, code reviews, automated tests, Dockerization, Helm, and CI/CD; weekly zero‑downtime releases
-
-### **Senior Software Engineer** · **Trustify Technology**
-
-Jan 2024 – Mar 2025 · Ho Chi Minh City, Vietnam · Full-time
-
-- Architected enterprise-grade systems using Python and Node.js with microservices, CQRS, and event sourcing; achieved sub‑200ms APIs and 99.95% availability on Azure AKS
-- Developed AI-powered applications with automated ML pipelines (training, testing, deployment), improving decision accuracy by 35% across 10+ enterprise clients
-- Led a team of 6 engineers; introduced Agile/Scrum, code reviews, and test automation; 40% faster delivery and 95% code coverage
-- Designed scalable API architecture (GraphQL + REST), implemented DB optimization (indexing, query tuning); 60% latency reduction supporting 10M+ daily transactions
-
-### Previous Experience (2019–2023)
-
-- **Senior Data Engineer** · **Asia Commercial Bank (ACB)** — Aug 2023 – Jun 2024  
-Architected enterprise data lake on Cloudera processing 5M+ daily transactions with 99.9% accuracy; automated data quality with Spark; built FastAPI services used by 100+ internal apps
-- **Software Data Engineer** · **Vietmoney Corp** — Mar 2021 – Aug 2023  
-Built fintech platform processing 10M+ daily transactions on GCP with 99.9% uptime; developed ML apps (price forecasting 96% accuracy, Vietnamese NER 96% F1), graph-based systems (20K+ nodes), and distributed web scraping (2× performance; 1,000+ pages/hour across 50+ platforms)
-- **Software Developer** · **Dai Phat Solutions** — Aug 2019 – Mar 2021  
-Delivered AI/ML CCTV system (15 FPS) deployed to 20+ clients; face recognition (92% accuracy) for 1,000+ employees; reduced manual processing by 90%
-- **Full‑stack Software Developer** · **LogiGear** — Jun 2018 – Mar 2019  
-Built Web3 app for wallet/contract/pool management; MetaMask to Ethereum network for on‑chain transactions
-
 ## Technical Skills
 
 - Programming: **Python**, **TypeScript**, **Node.js**, **Java**, **Golang**, **SQL**, **Rust**
