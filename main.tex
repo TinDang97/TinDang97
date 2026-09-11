@@ -98,7 +98,7 @@ I architect and lead client rebuilds across Vietnam and Myanmar --- fintech, rea
   \stack{Python · FastAPI · Kafka · PyFlink · TensorRT · Triton · K3s · ArgoCD · Jetson · DuckDB}
 
   \item \proj{Device-management migration}{Trustonic}
-  A customer could only be moved if they could be moved back, so I owned the rollback across PostgreSQL and DocumentDB. Rehearsing it is what found the gap: Postgres reverted cleanly, the document store, cache and archived objects did not, so a real rollback would have left the customer internally inconsistent. I extended the rollback to cover them, and tuned the migration jobs: vectorised batch validation, broadcast joins in place of shuffles, keyed DynamoDB reads so a run never scans a live table, and Redis partitioning chosen by measurement.
+  A customer could only be moved if they could be moved back, so I owned the rollback across PostgreSQL and DocumentDB. Rehearsing it is what found the gap: Postgres reverted cleanly, the document store, cache and archived objects did not --- which is the difference between a rollback plan and a rollback. I tuned the migration jobs as well: vectorised batch validation, broadcast joins in place of shuffles, keyed DynamoDB reads so a run never scans a live table, and Redis partitioning chosen by measurement.
   \stack{PySpark · AWS Glue · Airflow · DynamoDB · PostgreSQL · DocumentDB · Redis · boto3}
 \end{itemize}
 
