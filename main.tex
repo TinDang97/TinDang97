@@ -81,7 +81,7 @@ Eight years building production backend systems in Python, Rust and TypeScript, 
 
 \begin{minipage}{\linewidth}
 \justifying
-I architect and lead client rebuilds across Vietnam and Myanmar --- fintech, real estate and intelligent transport for Yoma Group, Yoma Bank, Wave Money and Trustonic --- and wrote the company's engineering career ladder.
+I architect and lead client rebuilds across Vietnam and Myanmar --- fintech, real estate and intelligent transport for Yoma Group, Yoma Bank, Wave Money and Trustonic --- and wrote the company's engineering career ladder. Alongside the work below I built Yoma Bank's microfinance lending MVP in Java 21 and Spring Boot, and owned the money and authentication paths on Star City's resident platform for a team of nine.
 \end{minipage}
 
 \begin{itemize}[itemsep=1pt]
@@ -97,11 +97,8 @@ I architect and lead client rebuilds across Vietnam and Myanmar --- fintech, rea
   400 camera streams produce more video than a city network can carry, so I moved inference to the edge and sent only events onward: YOLO models served on TensorRT and Triton hold a P95 of 85\,ms, Jetson nodes cut backhaul by 75\%, and events reach the data centre over mutually authenticated Kafka. I load-tested the pipeline to 71K events a second before adopting it.
   \stack{Python · FastAPI · Kafka · PyFlink · TensorRT · Triton · K3s · ArgoCD · Jetson · DuckDB}
 
-  \item \proj{Microfinance lending \& resident services}{Yoma Bank, Star City}
-  I built Yoma Bank's microfinance lending MVP, and on Star City's resident platform owned the money, authentication and payment paths for a team of nine, closing auth-enumeration, TOCTOU and privilege-escalation findings before launch. {\scriptsize\textcolor{emphasis}{Java 21 · Spring Boot 3.3 · jOOQ · Kafka · Flyway · FastAPI · TypeScript}}
-
   \item \proj{Device-management migration}{Trustonic}
-  A customer could only be moved if they could be moved back, so I owned the rollback across PostgreSQL and DocumentDB. I tuned the migration jobs as well: vectorised batch validation, broadcast joins in place of shuffles, keyed DynamoDB reads so a run never scans a live table, and Redis partitioning chosen by measurement.
+  A customer could only be moved if they could be moved back, so I owned the rollback across PostgreSQL and DocumentDB. Rehearsing it is what found the gap: Postgres reverted cleanly, the document store, cache and archived objects did not, so a real rollback would have left the customer internally inconsistent. I extended the rollback to cover them, and tuned the migration jobs: vectorised batch validation, broadcast joins in place of shuffles, keyed DynamoDB reads so a run never scans a live table, and Redis partitioning chosen by measurement.
   \stack{PySpark · AWS Glue · Airflow · DynamoDB · PostgreSQL · DocumentDB · Redis · boto3}
 \end{itemize}
 
@@ -116,15 +113,15 @@ I co-founded ClickAI (\href{https://clickai.vn}{clickai.vn}) and built its conve
 
 \begin{itemize}[itemsep=1pt]
   \item \proj{Model platform}{20+ providers}
-  I built the orchestration layer that routes across 20 third-party providers and one of our own, with failover, vector memory and reasoning-model support; choosing the model by policy rather than habit cut API spend by 20\%. Generation fans out to ComfyUI, Replicate, fal.ai and ElevenLabs behind circuit breakers.
+  I built the orchestration layer that routes across 20 third-party providers and one of our own, with failover, vector memory and reasoning-model support; choosing the model by policy rather than habit cut API spend by 20\%. The first time a provider went hard-down, users hit the failure before routing shifted --- so I stopped waiting for failures and probed providers continuously, marking one down before traffic could reach it. Generation fans out to ComfyUI, Replicate, fal.ai and ElevenLabs behind circuit breakers.
   \stack{Python · FastAPI · Weaviate · Qdrant · FalkorDB}
 
   \item \proj{Billing \& metering}{sole author}
-  I built the wallet, plan, promotion and referral-commission engine over a month-partitioned ledger that meters every LLM call. A reconciliation check I wrote found provider billing had drifted more than 30\% from what we metered; I corrected the ledger model and its indexes, keyed idempotency on the source event so a retry cannot double-count, and made the check a standing job.
+  I built the wallet, plan, promotion and referral-commission engine over a month-partitioned ledger that meters every LLM call. A retry loop was quietly re-sending the same work, and a reconciliation check I wrote is what caught it --- provider billing had drifted more than 30\% from what we metered. I corrected the ledger model and its indexes, keyed idempotency on the source event so a retry cannot double-count, and made the check a standing job.
   \stack{Python · FastAPI · PostgreSQL (partitioned) · Redis}
 
   \item \proj{Production, identity \& web}{99.9\% uptime, 1K+ concurrent sessions}
-  I authored the 13-service deployment with cert-manager and autoscaling, and held sub-2s responses. When the database saturated I moved PostgreSQL onto a three-node Patroni cluster; when a release regressed, my own instrumentation caught it before any customer did; and a hosting comparison I took to stakeholders halved the monthly bill. I also shipped OAuth, TOTP and refresh-token rotation.
+  I authored the 13-service deployment with cert-manager and autoscaling, and held sub-2s responses. When the database saturated I moved PostgreSQL onto a three-node Patroni cluster; when a release regressed, my own instrumentation caught it before any customer did; and a hosting comparison I took to stakeholders halved the monthly bill.
   \stack{Kubernetes · Helm · Azure · Patroni · Prometheus · Next.js 14 · TypeScript}
 \end{itemize}
 
