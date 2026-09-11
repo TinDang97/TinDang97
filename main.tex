@@ -55,7 +55,7 @@
 \addbibresource{sample.bib}
 
 \begin{document}
-\fontsize{9pt}{10.2pt}\selectfont
+\fontsize{8.9pt}{10.0pt}\selectfont
 \name{Tin Dang Huynh Trung}
 \tagline{Senior Software Engineer -- Backend, AI Platforms \& Distributed Systems}
 \photoR{2.2cm}{avatar}
@@ -81,30 +81,30 @@ Senior software engineer with eight years of building and running production bac
 
 \begin{minipage}{\linewidth}
 \justifying
-Fintech, real-estate and intelligent-transport platforms for Yoma Group, Yoma Bank, Wave Money and Trustonic across Vietnam and Myanmar. I architect and lead client rebuilds, and wrote the company's engineering career ladder.
+I architect and lead client rebuilds across Vietnam and Myanmar --- fintech, real estate and intelligent transport for Yoma Group, Yoma Bank, Wave Money and Trustonic --- and wrote the company's engineering career ladder.
 \end{minipage}
 
 \smallskip
 
-\begin{itemize}[itemsep=3pt]
+\begin{itemize}[itemsep=2pt]
   \item \proj{Estate-finance platform}{Yoma Group --- sole engineer \& architect}
-  Rebuilt a live property-management and treasury system off PHP/Laravel onto one append-only double-entry ledger, so every balance can be re-derived and audited, with per-customer cutover, an outbox and standing reconciliation. Graded 235 legacy business rules against it and published the gaps before anyone moved.
+  The legacy system kept balances in rows anyone could edit, so I rebuilt it off PHP/Laravel onto a single append-only double-entry ledger where every balance can be re-derived and audited, with per-customer cutover, an outbox and reconciliation around it. Before anyone moved I graded 235 legacy business rules against the new system and published the gaps.
   \stack{Python 3.12 · FastAPI · async SQLAlchemy 2 · PostgreSQL (schema-per-tenant) · Redis · Next.js · AWS ECS · Envoy}
 
   \item \proj{Card payments \& PCI boundary}{Yoma Group, Wave Money}
-  Cardholder data in its own service, database and network, with a CI-guarded import ban keeping the rest of the platform out of PCI scope. Integrated 2C2P with idempotent callbacks and three-way reconciliation.
+  I put cardholder data behind its own service, database and network so that only that service falls inside PCI scope, and made the build reject any import that crosses the boundary. Card payments run through 2C2P with callbacks that are safe to retry and a three-way reconciliation behind them.
   \stack{Python · FastAPI · PostgreSQL · 2C2P · Docker}
 
   \item \proj{Urban traffic intelligence}{Ho Chi Minh City --- architect \& sole engineer}
-  Three-tier platform for 400+ cameras where raw video never leaves the edge: Jetson nodes cut backhaul bandwidth 75\%, YOLO models track vehicles at a P95 of 85\,ms, events reach the data centre over mutually authenticated Kafka. Load-tested to 71K events/s before adopting it; plates pseudonymised for GDPR.
+  400 cameras produce more video than a city network can carry, so I kept the footage at the edge and sent only events onward. Jetson nodes cut backhaul by 75\%, YOLO models on TensorRT track vehicles at a P95 of 85\,ms, and events travel to the data centre over mutually authenticated Kafka. I load-tested the pipeline to 71K events a second before adopting it.
   \stack{Python · FastAPI · Kafka · PyFlink · TensorRT · Triton · K3s · ArgoCD · Jetson · DuckDB}
 
   \item \proj{Microfinance lending \& resident services}{Yoma Bank, Star City}
-  Built Yoma Bank's lending MVP and led its bilingual staff-culture survey. On the Star City resident platform I owned the money, authentication and payment paths for a nine-person team, closing auth-enumeration, TOCTOU and privilege-escalation findings before launch.
+  I built Yoma Bank's microfinance lending MVP and led the bilingual staff-culture survey alongside it. On Star City's resident platform I owned the money, authentication and payment paths for a team of nine, and closed auth-enumeration, TOCTOU and privilege-escalation findings before launch.
   \stack{Java 21 · Spring Boot 3.3 · jOOQ · Kafka · Flyway · Python · FastAPI · TypeScript}
 
   \item \proj{Device-management migration}{Trustonic}
-  Made the cutover reversible by owning the per-customer rollback across PostgreSQL and DocumentDB, and tuned the migration jobs: vectorised batch validation, broadcast joins, keyed DynamoDB reads so a run never scans a live table, measured Redis partitioning.
+  A customer could only be moved if they could be moved back, so I owned the rollback across PostgreSQL and DocumentDB. I tuned the migration jobs as well: vectorised batch validation, broadcast joins in place of shuffles, keyed DynamoDB reads so a run never scans a live table, and Redis partitioning chosen by measurement.
   \stack{PySpark · AWS Glue · Airflow · DynamoDB · PostgreSQL · DocumentDB · Redis · boto3}
 \end{itemize}
 
@@ -112,21 +112,21 @@ Fintech, real-estate and intelligent-transport platforms for Yoma Group, Yoma Ba
 
 \cvevent{Founder \& Principal Engineer}{Pilot Space (open-source AI infrastructure)}{Jan 2026 -- Present}{Remote}
 
-\begin{itemize}[itemsep=3pt]
+\begin{itemize}[itemsep=2pt]
   \item \proj{Moon}{Redis-compatible in-memory store, written from scratch}
-  RESP2/RESP3 and 250+ commands so existing clients connect unchanged, with native vector, BM25 and graph search under MVCC. Released 30 times to v0.8.9; measures 1.62\texttimes{} GET and 1.32\texttimes{} SET against Redis 7.0 with 8--22\% less memory per key, published with the cases it loses.
+  I wrote it from scratch so that existing Redis clients connect unchanged: RESP2/RESP3, 250+ commands, and native vector, BM25 and graph search under MVCC. It has shipped 30 releases to v0.8.9 and measures 1.62\texttimes{} on GET and 1.32\texttimes{} on SET against Redis 7.0 with 8--22\% less memory per key, published alongside the cases where it loses.
   \stack{Rust · Tokio · io\_uring · crates.io · PyPI}
 
   \item \proj{Lunaris \& Helios}{agent memory and agent harness}
-  Lunaris recalls across 100K documents per scope in 19--22\,ms at the median, guarded by a CI gate that fails any 5\% regression. Helios is an agent harness with 12 provider backends, a native MCP client and server, WASM-sandboxed extensions, and circuit-breaker policy on every outbound call.
+  Lunaris recalls across 100K documents per scope in 19--22\,ms at the median, and a CI gate fails the build on any 5\% regression. Helios is the harness that consumes it: 12 provider backends, a native MCP client and server, WASM-sandboxed extensions, and a circuit breaker on every outbound call.
   \stack{Rust · Tokio · MCP · Wasmtime · npm}
 
   \item \proj{Hydroa}{multi-tenant LLM gateway}
-  Envoy in front of FastAPI, six providers behind per-tenant and per-provider circuit breakers, customer keys encrypted at rest, and a cost ledger reconciled against what providers actually billed.
+  A gateway that meters what each tenant spends on LLMs. Envoy authorises at the edge, six providers sit behind per-tenant and per-provider circuit breakers, customer keys are encrypted at rest, and a cost ledger reconciles against what the providers actually billed.
   \stack{Python · FastAPI · Envoy · PostgreSQL · Kubernetes · OpenTelemetry}
 
   \item \proj{ADD}{published development method}
-  A spec-first, red/green method for building software with AI agents, published as \texttt{@pilotspace/add} (npm) and \texttt{pilotspace-add} (PyPI) at about 1.2K downloads a month; the working method on the platforms above.
+  Specify the work, write the failing tests, build until they pass, then verify against a recorded result rather than a plausible diff. Published as \texttt{@pilotspace/add} and \texttt{pilotspace-add} at about 1.2K downloads a month.
 \end{itemize}
 
 \divider
@@ -135,22 +135,22 @@ Fintech, real-estate and intelligent-transport platforms for Yoma Group, Yoma Ba
 
 \begin{minipage}{\linewidth}
 \justifying
-Co-founded ClickAI (\href{https://clickai.vn}{clickai.vn}) and built its conversational AI platform from scratch: multi-modal chat, image and audio generation and community, grown to 40K+ users across Southeast Asia within four months. As CTO I set the architecture and engineering standards, led a product team of twelve to fourteen, and owned billing, identity and deployment.
+I co-founded ClickAI (\href{https://clickai.vn}{clickai.vn}) and built its conversational AI platform from scratch --- multi-modal chat, image and audio generation, community --- to 40K+ users across Southeast Asia inside four months. As CTO I set the architecture and engineering standards, led a team of twelve to fourteen, and owned billing, identity and deployment myself.
 \end{minipage}
 
 \smallskip
 
-\begin{itemize}[itemsep=3pt]
+\begin{itemize}[itemsep=2pt]
   \item \proj{Billing \& metering}{sole author}
-  Wallets, plans, promotions and referral commissions over a month-partitioned ledger metering every LLM call. A reconciliation check I wrote found provider billing had drifted more than 30\% from what we metered; I fixed the ledger model and indexes, keyed idempotency on the source event so retries cannot double-count, and made the check a standing job.
+  I built the wallet, plan, promotion and referral-commission engine over a month-partitioned ledger that meters every LLM call. A reconciliation check I wrote found provider billing had drifted more than 30\% from what we metered; I corrected the ledger model and its indexes, keyed idempotency on the source event so a retry cannot double-count, and made the check a standing job.
   \stack{Python · FastAPI · PostgreSQL (partitioned) · Redis}
 
   \item \proj{Model platform}{20+ providers}
-  An LLM orchestration layer with a custom provider alongside 20 third-party ones, routing with failover, vector memory and reasoning-model support; policy-based routing cut API spend by 20\%. Generation fans out to ComfyUI, Replicate, fal.ai, ElevenLabs and OpenAI behind circuit breakers.
+  I built the orchestration layer that routes across 20 third-party providers and one of our own, with failover, vector memory and reasoning-model support; choosing the model by policy rather than habit cut API spend by 20\%. Generation fans out to ComfyUI, Replicate, fal.ai and ElevenLabs behind circuit breakers.
   \stack{Python · FastAPI · Weaviate · Qdrant · FalkorDB}
 
   \item \proj{Production, identity \& web}{99.9\% uptime, 1K+ concurrent sessions}
-  Authored the 13-service deployment with cert-manager and autoscaling, holding sub-2s responses. After a saturation incident I moved PostgreSQL onto a three-node Patroni cluster, rolled back a bad release my instrumentation caught before any customer did, and cut hosting cost 50\%. Also shipped OAuth, TOTP and refresh-token rotation, and the web client's community and creative features with SSE streaming, workspaces, RBAC and bilingual localisation.
+  I authored the 13-service deployment with cert-manager and autoscaling, and held sub-2s responses. When the database saturated I moved PostgreSQL onto a three-node Patroni cluster; when a release regressed, my own instrumentation caught it before any customer did; and a hosting comparison I took to stakeholders halved the monthly bill. I also shipped OAuth, TOTP and refresh-token rotation, and the web client's community and creative features.
   \stack{Kubernetes · Helm · Azure · Patroni · Prometheus · Next.js 14 · TypeScript}
 \end{itemize}
 
@@ -158,26 +158,23 @@ Co-founded ClickAI (\href{https://clickai.vn}{clickai.vn}) and built its convers
 
 \begin{itemize}[leftmargin=*,itemsep=3pt,topsep=3pt]
   \item \pastjob{Senior Data Engineer}{Asia Commercial Bank (ACB)}{Aug 2023 -- Jun 2024}
-  Enterprise data lake at 5M+ daily transactions. A data-quality framework I built across six dimensions cut manual verification by 80\%; my APIs served 100+ internal applications.
-  \stack{Cloudera · PySpark · Dagster · Impala · Iceberg · FastAPI}
+  Ran an enterprise data lake carrying 5M+ daily transactions. A data-quality framework I built across six dimensions cut manual verification by 80\%, and my APIs served 100+ internal applications. {\scriptsize\textcolor{emphasis}{Cloudera · PySpark · Dagster · Iceberg · FastAPI}}
 
   \item \pastjob{Software Data Engineer}{Vietmoney Corp}{Mar 2021 -- Aug 2023}
-  Fintech appraisal and lending at 10M+ daily transactions, 99.9\% uptime. Price forecasting at 96\% accuracy cut appraisal from 15 minutes to 5 seconds; Vietnamese NER reached 96\% F1; a distributed crawler doubled throughput across 50+ sources.
+  Built on a fintech appraisal and lending platform running 10M+ daily transactions at 99.9\% uptime. Price forecasting at 96\% accuracy cut appraisal from 15 minutes to 5 seconds, Vietnamese NER reached 96\% F1, and a distributed crawler doubled throughput across 50+ sources.
   \stack{Python · PyTorch · BERT · Scrapy · Pub/Sub · BigQuery · Airflow · Kubernetes · GCP}
 
   \item \pastjob{Software Developer}{Dai Phat Solutions}{Aug 2019 -- Mar 2021}
-  CCTV analytics at 15 FPS for 20+ clients cut reported incidents by 40\%; face recognition at 92\% accuracy over 1,000+ employees removed 90\% of a manual process.
-  \stack{Python · PyTorch · OpenCV · FAISS · Kafka · Redis · FFmpeg}
+  Shipped CCTV analytics at 15 FPS to 20+ clients, cutting reported incidents by 40\%, and face recognition at 92\% accuracy over 1,000+ employees that removed 90\% of a manual process. {\scriptsize\textcolor{emphasis}{Python · PyTorch · OpenCV · FAISS · Kafka · FFmpeg}}
 
   \item \pastjob{Full-stack Developer}{LogiGear Corporation}{Jun 2018 -- Mar 2019}
-  Web3 wallet, smart-contract and liquidity-pool management on Ethereum with MetaMask, in Node.js and React.
+  Built wallet, smart-contract and liquidity-pool management on Ethereum with MetaMask, in Node.js and React.
 \end{itemize}
 
 \cvsection{Open Source}
 
 \begin{itemize}[leftmargin=*,itemsep=2pt,topsep=3pt]
-  \item \textbf{Moon}, \textbf{Lunaris} and \textbf{ADD} at \href{https://github.com/pilotspace}{github.com/pilotspace} (described above).
-  \item \textbf{yowo} (PyPI) --- production YOLO inference and export across TensorRT, ONNX Runtime, CoreML and OpenVINO, with ByteTrack and CLIP-ReID tracking. \textbf{fastapi-multi-tenant}; \textbf{rjson}, Rust-backed JSON for Python; \href{https://github.com/vietmoney/face-anti-spoofing}{\textbf{face-anti-spoofing}}, founded at Vietmoney.
+  \item \textbf{Moon}, \textbf{Lunaris} and \textbf{ADD} at \href{https://github.com/pilotspace}{github.com/pilotspace}, described above. \textbf{yowo} (PyPI) --- production YOLO inference and export across TensorRT, ONNX Runtime, CoreML and OpenVINO, with ByteTrack and CLIP-ReID tracking. \textbf{fastapi-multi-tenant}; \textbf{rjson}, Rust-backed JSON for Python; \href{https://github.com/vietmoney/face-anti-spoofing}{\textbf{face-anti-spoofing}}, founded at Vietmoney.
 \end{itemize}
 
 \cvsection{Technical Skills}
@@ -187,6 +184,6 @@ Co-founded ClickAI (\href{https://clickai.vn}{clickai.vn}) and built its convers
 
 \cvsection{Education, Teaching \& Certifications}
 
-\noindent\footnotesize\textbf{BSc Computer Science (High-Quality Program)}, Ton Duc Thang University, 2015--2019, GPA 3.2. \textbf{Teaching:} Instructor, Design Patterns, Ton Duc Thang University (2022); Mentor, MindX (2023); Speaker, AI Workshop, FPT University (2025). \textbf{Certifications:} \href{https://www.credential.net/f16b9afc-1d7a-4427-b7e3-f0bf76cd75ae}{Google Cloud AI Agents} (2025); \href{https://s3-us-west-2.amazonaws.com/udacity-printer/production/certificates/0ad10fbf-13db-4f96-b196-a108e3bff2b2.pdf}{AWS Machine Learning Foundations}, Udacity (2022); Scrum, Axon Active (2017). \textbf{Languages:} English, Vietnamese.
+\noindent\footnotesize\textbf{BSc Computer Science (High-Quality Program)}, Ton Duc Thang University, 2015--2019, GPA 3.2. \textbf{Teaching:} Design Patterns instructor, Ton Duc Thang University (2022); mentor, MindX (2023); speaker, AI Workshop, FPT University (2025). \textbf{Certifications:} \href{https://www.credential.net/f16b9afc-1d7a-4427-b7e3-f0bf76cd75ae}{Google Cloud AI Agents} (2025); \href{https://s3-us-west-2.amazonaws.com/udacity-printer/production/certificates/0ad10fbf-13db-4f96-b196-a108e3bff2b2.pdf}{AWS ML Foundations} (2022); Scrum (2017). \textbf{Languages:} English, Vietnamese.
 
 \end{document}
