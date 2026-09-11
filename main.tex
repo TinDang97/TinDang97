@@ -6,7 +6,7 @@
 \PassOptionsToPackage{dvipsnames}{xcolor}
 \documentclass[10pt,a4paper,ragged2e,withhyper]{altacv}
 
-\geometry{left=1.2cm,right=1.2cm,top=0.8cm,bottom=0.7cm}
+\geometry{left=1.2cm,right=1.2cm,top=0.75cm,bottom=0.6cm}
 
 \usepackage{ragged2e}
 \usepackage{xurl}
@@ -55,7 +55,7 @@
 \addbibresource{sample.bib}
 
 \begin{document}
-\fontsize{8.9pt}{9.8pt}\selectfont
+\fontsize{8.9pt}{9.6pt}\selectfont
 \name{Tin Dang Huynh Trung}
 \tagline{Senior Software Engineer -- LLM Infrastructure, Backend \& Distributed Systems}
 \photoR{2.2cm}{avatar}
@@ -72,7 +72,7 @@
 
 \begin{minipage}{\linewidth}
 \justifying
-Eight years building production backend systems in Python, Rust and TypeScript, with machine learning in production since 2019 and the last two years on the infrastructure under AI products: multi-provider LLM gateways, routing with failover, cost metering that reconciles against what providers actually bill, agent memory and MCP. I came to this from fintech and build it the same way --- correctness enforced by structure rather than convention: append-only ledgers, multi-tenancy that fails closed, money that cannot move twice.
+Eight years building production backend systems in Python, Rust and TypeScript, with machine learning in production since 2019 and the last two years on the infrastructure under AI products: multi-provider LLM gateways, routing with failover, cost metering that reconciles against what providers actually bill, agent memory and MCP. I came to this from fintech and build it the same way --- correctness enforced by structure rather than convention: append-only ledgers, multi-tenancy that fails closed, money that cannot move twice. Most of my code is now written by an agent; judging whether it is correct stays mine, under a verification discipline I wrote, published and benchmarked.
 \end{minipage}
 
 \cvsection{Professional Experience}
@@ -81,10 +81,10 @@ Eight years building production backend systems in Python, Rust and TypeScript, 
 
 \begin{minipage}{\linewidth}
 \justifying
-I architect and lead client rebuilds across Vietnam and Myanmar --- fintech, real estate and intelligent transport for Yoma Group, Yoma Bank, Wave Money and Trustonic --- and wrote the company's engineering career ladder. Alongside the work below I built Yoma Bank's microfinance lending MVP in Java 21 and Spring Boot, and owned the money and authentication paths on Star City's resident platform for a team of nine.
+I architect and lead client rebuilds across Vietnam and Myanmar --- fintech, real estate and intelligent transport for Yoma Group, Yoma Bank, Wave Money and Trustonic --- and wrote the company's engineering career ladder. I also built Yoma Bank's microfinance lending MVP in Java 21 and Spring Boot, and owned money and authentication on Star City's resident platform for a team of nine.
 \end{minipage}
 
-\begin{itemize}[itemsep=1pt]
+\begin{itemize}[itemsep=0pt,topsep=1pt,parsep=0pt]
   \item \proj{Estate-finance platform}{Yoma Group --- sole engineer \& architect}
   The legacy system kept balances in rows anyone could edit, so I rebuilt it off PHP/Laravel onto a single append-only double-entry ledger where every balance can be re-derived and audited, with per-customer cutover, an outbox and reconciliation around it. Before anyone moved I graded 235 legacy business rules against the new system and published the gaps.
   \stack{Python 3.12 · FastAPI · async SQLAlchemy 2 · PostgreSQL (schema-per-tenant) · Redis · Next.js · AWS ECS · Envoy}
@@ -98,7 +98,7 @@ I architect and lead client rebuilds across Vietnam and Myanmar --- fintech, rea
   \stack{Python · FastAPI · Kafka · PyFlink · TensorRT · Triton · K3s · ArgoCD · Jetson · DuckDB}
 
   \item \proj{Device-management migration}{Trustonic}
-  A customer could only be moved if they could be moved back, so I owned the rollback across PostgreSQL and DocumentDB. Rehearsing it is what found the gap: Postgres reverted cleanly, the document store, cache and archived objects did not --- which is the difference between a rollback plan and a rollback. I tuned the migration jobs as well: vectorised batch validation, broadcast joins in place of shuffles, keyed DynamoDB reads so a run never scans a live table, and Redis partitioning chosen by measurement.
+  A customer could only be moved if they could be moved back, so I owned the rollback across PostgreSQL and DocumentDB. Rehearsing it is what found the gap: Postgres reverted cleanly, the document store, cache and archived objects did not --- which is the difference between a rollback plan and a rollback. I tuned the migration jobs alongside it: vectorised validation, broadcast joins in place of shuffles, and keyed DynamoDB reads so a run never scans a live table.
   \stack{PySpark · AWS Glue · Airflow · DynamoDB · PostgreSQL · DocumentDB · Redis · boto3}
 \end{itemize}
 
@@ -108,20 +108,20 @@ I architect and lead client rebuilds across Vietnam and Myanmar --- fintech, rea
 
 \begin{minipage}{\linewidth}
 \justifying
-I co-founded ClickAI (\href{https://clickai.vn}{clickai.vn}) and built its conversational AI platform from scratch --- multi-modal chat, image and audio generation, community --- to 40K+ users across Southeast Asia inside four months. As CTO I set the architecture and engineering standards, led a team of twelve to fourteen, and owned billing, identity and deployment myself.
+I co-founded ClickAI (\href{https://clickai.vn}{clickai.vn}) and built its conversational AI platform from scratch --- multi-modal chat, image and audio generation, community --- to 40K+ users across Southeast Asia inside four months. As CTO I set architecture and engineering standards, led twelve to fourteen people, and owned billing, identity and deployment myself.
 \end{minipage}
 
-\begin{itemize}[itemsep=1pt]
+\begin{itemize}[itemsep=0pt,topsep=1pt,parsep=0pt]
   \item \proj{Model platform}{20+ providers}
-  I built the orchestration layer that routes across 20 third-party providers and one of our own, with failover, vector memory and reasoning-model support; choosing the model by policy rather than habit cut API spend by 20\%. The first time a provider went hard-down, users hit the failure before routing shifted --- so I stopped waiting for failures and probed providers continuously, marking one down before traffic could reach it. Generation fans out to ComfyUI, Replicate, fal.ai and ElevenLabs behind circuit breakers.
-  \stack{Python · FastAPI · Weaviate · Qdrant · FalkorDB}
+  I built the orchestration layer that routes across 20 third-party providers and one of our own, with failover, vector memory and reasoning-model support; choosing the model by policy rather than habit cut API spend by 20\%. The first time a provider went hard-down, users hit the failure before routing shifted --- so I stopped waiting for failures and probed providers continuously, marking one down before traffic could reach it. Image and audio generation fans out behind circuit breakers.
+  \stack{Python · FastAPI · Weaviate · Qdrant · FalkorDB · ComfyUI · Replicate · fal.ai · ElevenLabs}
 
   \item \proj{Billing \& metering}{sole author}
   I built the wallet, plan, promotion and referral-commission engine over a month-partitioned ledger that meters every LLM call. A retry loop was quietly re-sending the same work, and a reconciliation check I wrote is what caught it --- provider billing had drifted more than 30\% from what we metered. I corrected the ledger model and its indexes, keyed idempotency on the source event so a retry cannot double-count, and made the check a standing job.
   \stack{Python · FastAPI · PostgreSQL (partitioned) · Redis}
 
   \item \proj{Production, identity \& web}{99.9\% uptime, 1K+ concurrent sessions}
-  I authored the 13-service deployment with cert-manager and autoscaling, and held sub-2s responses. When the database saturated I moved PostgreSQL onto a three-node Patroni cluster; when a release regressed, my own instrumentation caught it before any customer did; and a hosting comparison I took to stakeholders halved the monthly bill.
+  I authored the 13-service deployment with cert-manager and autoscaling, and held sub-2s responses. When the database saturated I moved PostgreSQL onto a three-node Patroni cluster; when a release regressed, my own instrumentation caught it before any customer did; and a hosting comparison I took to stakeholders halved the bill.
   \stack{Kubernetes · Helm · Azure · Patroni · Prometheus · Next.js 14 · TypeScript}
 \end{itemize}
 
@@ -129,26 +129,26 @@ I co-founded ClickAI (\href{https://clickai.vn}{clickai.vn}) and built its conve
 
 \cvevent{Founder \& Principal Engineer}{Pilot Space (open-source AI infrastructure)}{Jan 2026 -- Present}{Remote}
 
-\begin{itemize}[itemsep=1pt]
+\begin{itemize}[itemsep=0pt,topsep=1pt,parsep=0pt]
   \item \proj{Hydroa}{multi-tenant LLM gateway}
   A gateway that meters what each tenant spends on LLMs. Envoy authorises at the edge, six providers sit behind per-tenant and per-provider circuit breakers, customer keys are encrypted at rest, and a cost ledger reconciles against what the providers actually billed.
   \stack{Python · FastAPI · Envoy · PostgreSQL · Kubernetes · OpenTelemetry}
 
   \item \proj{\href{https://pilotspace.github.io/lunaris/}{Lunaris} \& Helios}{agent memory and agent harness}
-  Lunaris recalls across 100K documents per scope in 19--22\,ms at the median, and a CI gate fails the build on any 5\% regression. Helios is the harness that consumes it: 12 provider backends, a native MCP client and server, WASM-sandboxed extensions, and a circuit breaker on every outbound call.
+  Lunaris recalls across 100K documents per scope in 19--22\,ms at the median, held by a 5\% perf-regression cliff in CI and a separate recall-quality ratchet. Helios is the harness that consumes it: 12 provider backends, a native MCP client and server, WASM-sandboxed extensions, and a circuit breaker on every outbound call.
   \stack{Rust · Tokio · MCP · Wasmtime · npm}
 
   \item \proj{\href{https://pilotspace.github.io/moon/}{Moon}}{Redis-compatible in-memory store, written from scratch}
-  I wrote it from scratch so that existing Redis clients connect unchanged: RESP2/RESP3, 250+ commands, and native vector, BM25 and graph search under MVCC. It has shipped 30 releases to v0.8.9 and measures 1.62\texttimes{} on GET and 1.32\texttimes{} on SET against Redis 7.0 with 8--22\% less memory per key, published alongside the cases where it loses.
+  Existing Redis clients connect unchanged: RESP2/RESP3, 250+ commands, and native vector, BM25 and graph search under MVCC. Thirty releases to v0.8.9, measuring 1.62\texttimes{} on GET and 1.32\texttimes{} on SET against Redis 7.0 with 8--22\% less memory per key --- published alongside the command families where it loses.
   \stack{Rust · Tokio · io\_uring · crates.io · PyPI}
 
-  \item \proj{\href{https://pilotspace.github.io/ADD/}{ADD}}{published development method}
-  Specify the work, write the failing tests, build until they pass, then verify against a recorded result rather than a plausible diff. I published a six-milestone benchmark of it, then retracted my own headline claim and republished after finding a defect in my own meter. Shipped as \texttt{@pilotspace/add} and \texttt{pilotspace-add} at 3.6.0, about 1.2K downloads a month.
+  \item \proj{\href{https://pilotspace.github.io/ADD/}{ADD}}{the method behind the projects above}
+  An agent writes most of my code, so I made the trust explicit: the contract is frozen and hashed before any code exists, the failing test is committed before the fix, and a build is accepted on a receipt binding the passing run to the files that produced it --- never on a diff that reads well. I published a six-milestone benchmark of the method, then retracted my own headline claim after finding a defect in my own meter; the corrected report has it costing 1.7\texttimes{} the cheaper alternative on a workload that could not tell them apart. Shipped as \texttt{@pilotspace/add} and \texttt{pilotspace-add} at 3.6.0.
 \end{itemize}
 
 \cvsection{Earlier Experience (2018 -- 2024)}
 
-\begin{itemize}[leftmargin=*,itemsep=2pt,topsep=2pt]
+\begin{itemize}[leftmargin=*,itemsep=1pt,topsep=1pt,parsep=0pt]
   \item \pastjob{Senior Data Engineer}{Asia Commercial Bank (ACB)}{Aug 2023 -- Jun 2024}
   Ran an enterprise data lake carrying 5M+ daily transactions. A data-quality framework I built across six dimensions cut manual verification by 80\%, and my APIs served 100+ internal applications. {\scriptsize\textcolor{emphasis}{Cloudera · PySpark · Dagster · Iceberg · FastAPI}}
 
@@ -164,18 +164,18 @@ I co-founded ClickAI (\href{https://clickai.vn}{clickai.vn}) and built its conve
 
 \cvsection{Open Source}
 
-\begin{itemize}[leftmargin=*,itemsep=1pt,topsep=2pt]
-  \item \textbf{yowo} --- production YOLO11/YOLO26 inference and export across TensorRT, ONNX Runtime, CoreML and OpenVINO, with ByteTrack and CLIP-ReID tracking and hardware-aware backend selection; on PyPI. \textbf{Moon}, \textbf{Lunaris} and \textbf{ADD} ship from \href{https://github.com/pilotspace}{github.com/pilotspace} through crates.io, npm and PyPI. Also \textbf{fastapi-multi-tenant}; \textbf{rjson}, Rust-backed JSON for Python; \href{https://github.com/vietmoney/face-anti-spoofing}{\textbf{face-anti-spoofing}}, founded at Vietmoney.
+\begin{itemize}[leftmargin=*,itemsep=0pt,topsep=1pt,parsep=0pt]
+  \item \textbf{yowo} --- production YOLO11/YOLO26 inference and export across TensorRT, ONNX Runtime, CoreML and OpenVINO, with ByteTrack and CLIP-ReID tracking and hardware-aware backend selection; on PyPI. \textbf{Moon}, \textbf{Lunaris} and \textbf{ADD} ship from \href{https://github.com/pilotspace}{github.com/pilotspace} through crates.io, npm and PyPI. Also \textbf{fastapi-multi-tenant} and \href{https://github.com/vietmoney/face-anti-spoofing}{\textbf{face-anti-spoofing}}, founded at Vietmoney.
 \end{itemize}
 
 \cvsection{Technical Skills}
 
-\skillrow{AI \& LLM infrastructure}{Multi-provider gateways, policy routing \& failover, token metering \& cost reconciliation, agent memory, MCP (client \& server), RAG, vector search (Weaviate, Qdrant, FalkorDB); PyTorch, YOLO, TensorRT, Triton, ONNX Runtime, OpenVINO}
-\skillrow{Languages \& backend}{Python (typed, async), Rust, TypeScript / Node.js, Java, SQL; FastAPI, SQLAlchemy 2, Tokio, Next.js / React; clean \& hexagonal architecture, CQRS, event sourcing, multi-tenancy, outbox \& idempotency, PCI boundaries, OAuth / OIDC}
-\skillrow{Data, storage \& cloud}{PostgreSQL (Patroni HA, RLS, partitioning), Redis, MongoDB, DynamoDB, DuckDB; Kafka, PyFlink, PySpark, AWS Glue, Airflow, BigQuery; Kubernetes, Helm, Envoy, OpenTelemetry, AWS, Azure, GCP}
+\skillrow{AI \& LLM infrastructure}{Multi-provider gateways, policy routing \& failover, token metering \& cost reconciliation, agent memory, MCP (client \& server), agent-assisted delivery (frozen contracts, RED/GREEN gates, verification receipts), RAG, vector search (Weaviate, Qdrant); PyTorch, YOLO, TensorRT, Triton, ONNX Runtime}
+\skillrow{Languages \& backend}{Python (typed, async), Rust, TypeScript / Node.js, Java, SQL; FastAPI, SQLAlchemy 2, Tokio, Next.js / React; hexagonal architecture, CQRS, event sourcing, multi-tenancy, outbox \& idempotency, PCI boundaries, OAuth / OIDC}
+\skillrow{Data, storage \& cloud}{PostgreSQL (Patroni HA, RLS, partitioning), Redis, MongoDB, DynamoDB, DuckDB; Kafka, PyFlink, PySpark, Glue, Airflow, BigQuery; Kubernetes, Helm, Envoy, OpenTelemetry, AWS, Azure, GCP}
 
 \cvsection{Education, Teaching \& Certifications}
 
-\noindent\footnotesize\textbf{BSc Computer Science (High-Quality Program)}, Ton Duc Thang University, 2015--2019. \textbf{Teaching:} Design Patterns instructor, Ton Duc Thang University (2022); mentor, MindX (2023); speaker, AI Workshop, FPT University (2025). \textbf{Certifications:} \href{https://www.credential.net/f16b9afc-1d7a-4427-b7e3-f0bf76cd75ae}{Google Cloud AI Agents} (2025); \href{https://s3-us-west-2.amazonaws.com/udacity-printer/production/certificates/0ad10fbf-13db-4f96-b196-a108e3bff2b2.pdf}{AWS ML Foundations} (2022). \textbf{Languages:} English, Vietnamese.
+\noindent\footnotesize\textbf{BSc Computer Science}, Ton Duc Thang University, 2015--2019. \textbf{Teaching:} Design Patterns instructor, Ton Duc Thang (2022); mentor, MindX (2023); speaker, AI Workshop, FPT University (2025). \textbf{Certifications:} \href{https://www.credential.net/f16b9afc-1d7a-4427-b7e3-f0bf76cd75ae}{Google Cloud AI Agents} (2025); \href{https://s3-us-west-2.amazonaws.com/udacity-printer/production/certificates/0ad10fbf-13db-4f96-b196-a108e3bff2b2.pdf}{AWS ML Foundations} (2022). \textbf{Languages:} English, Vietnamese.
 
 \end{document}

@@ -63,4 +63,4 @@
 
 #### Open Source
 
-[Moon](https://github.com/pilotspace/moon) · [Lunaris](https://github.com/pilotspace/lunaris) · [ADD](https://github.com/pilotspace/ADD) · [yowo](https://github.com/TinDang97/yowo) · [fastapi-multi-tenant](https://github.com/TinDang97/fastapi-multi-tenant) · [rjson](https://github.com/TinDang97/rjson)
+[Moon](https://github.com/pilotspace/moon) · [Lunaris](https://github.com/pilotspace/lunaris) · [ADD](https://github.com/pilotspace/ADD) · [yowo](https://github.com/TinDang97/yowo) · [fastapi-multi-tenant](https://github.com/TinDang97/fastapi-multi-tenant)
