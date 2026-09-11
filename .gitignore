@@ -1,0 +1,10 @@
+.serena/
+tmp/
+*.aux
+*.log
+*.out
+*.bbl
+*.bcf
+*.blg
+*.run.xml
+*.synctex.gz

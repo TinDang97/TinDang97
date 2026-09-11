@@ -1,63 +1,31 @@
 %%%%%%%%%%%%%%%%%
-% This is an sample CV template created using altacv.cls
-% (v1.3, 10 May 2020) written by LianTze Lim (liantze@gmail.com). Now compiles with pdfLaTeX, XeLaTeX and LuaLaTeX.
-%
-%% It may be distributed and/or modified under the
-%% conditions of the LaTeX Project Public License, either version 1.3
-%% of this license or (at your option) any later version.
-%% The latest version of this license is in
-%%    http://www.latex-project.org/lppl.txt
-%% and version 1.3 or later is part of all distributions of LaTeX
-%% version 2003/12/01 or later.
+% CV of Tin Dang Huynh Trung, built on altacv.cls (v1.3, LianTze Lim, LPPL 1.3).
+% Compile with pdflatex (fonts come from the roboto/lato packages) or XeLaTeX/LuaLaTeX.
 %%%%%%%%%%%%%%%%
 
-%% If you need to pass whatever options to xcolor
 \PassOptionsToPackage{dvipsnames}{xcolor}
-
-%% If you are using \orcid or academicons
-%% icons, make sure you have the academicons
-%% option here, and compile with XeLaTeX
-%% or LuaLaTeX.
-% \documentclass[10pt,a4paper,academicons]{altacv}
-
-%% Use the "normalphoto" option if you want a normal photo instead of cropped to a circle
-% \documentclass[10pt,a4paper,normalphoto]{altacv}
-
 \documentclass[10pt,a4paper,ragged2e,withhyper]{altacv}
 
-%% AltaCV uses the fontawesome5 and academicons fonts
-%% and packages.
-%% See http://texdoc.net/pkg/fontawesome5 and http://texdoc.net/pkg/academicons for full list of symbols. You MUST compile with XeLaTeX or LuaLaTeX if you want to use academicons.
+\geometry{left=1.3cm,right=1.3cm,top=1.0cm,bottom=1.0cm}
 
-% Change the page layout for single column MIT-style CV
-\geometry{left=1.5cm,right=1.5cm,top=1.5cm,bottom=1.5cm}
-
-% Packages for single column layout
 \usepackage{ragged2e}
 \usepackage{xurl}
+\usepackage{textcomp}
 
-
-% Change the font if you want to, depending on whether
-% you're using pdflatex or xelatex/lualatex
 \ifxetexorluatex
-  % If using xelatex or lualatex:
   \setmainfont{Roboto Slab}
   \setsansfont{Lato}
   \renewcommand{\familydefault}{\sfdefault}
 \else
-  % If using pdflatex:
   \usepackage[rm]{roboto}
   \usepackage[defaultsans]{lato}
-  % \usepackage{sourcesanspro}
   \renewcommand{\familydefault}{\sfdefault}
 \fi
 
-% Change the colours if you want to
 \definecolor{SlateGrey}{HTML}{2E2E2E}
 \definecolor{LightGrey}{HTML}{444444}
 \definecolor{DarkPastelRed}{HTML}{450808}
 \definecolor{PastelRed}{HTML}{8F0D0D}
-\definecolor{GoldenEarth}{HTML}{E7D192}
 \colorlet{name}{black}
 \colorlet{tagline}{PastelRed}
 \colorlet{heading}{DarkPastelRed}
@@ -67,31 +35,27 @@
 \colorlet{emphasis}{SlateGrey}
 \colorlet{body}{LightGrey}
 
-% Change some fonts, if necessary
 \renewcommand{\namefont}{\Huge\rmfamily\bfseries}
 \renewcommand{\personalinfofont}{\footnotesize}
-\renewcommand{\cvsectionfont}{\LARGE\rmfamily\bfseries}
+\renewcommand{\cvsectionfont}{\Large\rmfamily\bfseries}
 \renewcommand{\cvsubsectionfont}{\large\bfseries}
-
-
-% Change the bullets for itemize and rating marker
-% for \cvskill if you want to
 \renewcommand{\itemmarker}{{\small\textbullet}}
 \renewcommand{\ratingmarker}{\faCircle}
 
+% One-line skill row: bold label followed by plain, wrapping text.
+\newcommand{\skillrow}[2]{\noindent\textbf{#1:} #2\par\vspace{2pt}}
 
-%% sample.bib contains your publications
 \addbibresource{sample.bib}
 
 \begin{document}
+\fontsize{9.5pt}{11.4pt}\selectfont
 \name{Tin Dang Huynh Trung}
-\tagline{Senior Software Engineer}
-\photoR{2.5cm}{avatar}
-% MIT-style CV without photo
+\tagline{Senior Software Engineer -- Backend, AI Platforms \& Distributed Systems}
+\photoR{2.2cm}{avatar}
 
 \personalinfo{%
   \email{tindang.ht97@gmail.com}
-  \phone{+84937684229}
+  \phone{+84 937 684 229}
   \location{Ho Chi Minh City, Viet Nam}
   \linkedin{TinDang97}
   \github{TinDang97}
@@ -101,129 +65,88 @@
 
 \begin{minipage}{\linewidth}
 \justifying
-I'm a low-key developer, take a cup of coffee, passionate about building innovative solutions that make a difference.
-
-Senior Software Engineer specializing in AI/ML Applications with 8+ years of experience designing and implementing enterprise-scale intelligent systems. Expert in full-stack development of AI-powered applications, microservices architecture, and scalable software solutions serving. Proven track record in leading engineering teams, delivering production-ready ML systems, and architecting robust software infrastructure. Deep expertise in modern software engineering practices, AI/ML frameworks, cloud-native development.
+Senior software engineer with eight years building and operating production backend systems in Python, Rust and TypeScript across fintech, conversational AI, computer vision and data platforms. Sole architect on several greenfield platforms and technical lead on teams of 5--14. I prefer correctness enforced by structure (ledger invariants, fail-closed multi-tenancy, idempotent money movement), performance that is measured with the methodology published, and shipping: packages on PyPI, crates.io and npm with 100+ tagged releases between them.
 \end{minipage}
-
-% Education Section (MIT format places education prominently)
-\cvsection{Education}
-\cvevent{\textbf{Bachelor of Computer Science (High-Quality Program)}}{Ton Duc Thang University}{2015--2019}{Ho Chi Minh City, Vietnam}
-\begin{itemize}
-	\item \textbf{GPA: 3.2} | Relevant Coursework: Data Structures, Algorithms, Database Systems, Machine Learning
-  \item \textbf{Research:} Researcher Intern of NewAI Lab - TDTU (2018)
-  \item \textbf{Teaching:} Visiting Lecturer at Ton Duc Thang University (2022)
-  \item \textbf{Teaching \& Mentoring:} Data Analysis Mentor at Mindx Technology School (2023)
-  \item \textbf{Speaker:} WORKSHOP AI \– FPT UNIVERSITY (2025)
-\end{itemize}
 
 \cvsection{Professional Experience}
 
-\cvevent{Technical Lead - AI Chat Platform Architecture}{ClickAI Viet Nam}{Jun 2024 -- Present | Contract \& Full-time}{Ho Chi Minh City, Vietnam}
+\cvevent{Senior Software Engineer / Technical Lead}{Trustify Technology}{Jan 2024 -- Present}{Ho Chi Minh City, Vietnam}
 
 \begin{minipage}{\linewidth}
 \justifying
-Leading AI startup \href{http://clickai.vn}{ClickAI VN} specializing in comprehensive conversational AI platform with multi-modal capabilities, serving \textbf{40K+ active users} across Southeast Asia with enterprise-grade chat solutions \& Community.
+Consultancy delivering fintech, real-estate and intelligent-transport platforms in Vietnam and Myanmar (Yoma Group, Yoma Bank, Wave Money, Trustonic). Architect and lead engineer on client rebuilds; author of the company engineering career ladder, its spec-driven development method and the Azure Databricks lakehouse proposal for VinaCapital.
 \end{minipage}
 
-\medskip
+\smallskip
 
 \begin{itemize}
-  \item \textbf{Architected enterprise AI Chat Platform end-to-end} integrating \textbf{15+ LLM providers} with intelligent routing, load balancing, and failover; supported \textbf{multi-modal conversations} (text, image, audio, video, docs) and grew to \textbf{40K+ users in 4 months}
-
-  \item \textbf{Built real-time web client with Next.js 14 \& ShadcnUI, etc.} for streaming token-by-token responses via \textbf{SSE}, Edge middleware for auth/rate limits, organization workspaces, RBAC, audit trails and monetize system.
-
-  \item \textbf{Engineered high-performance chat infrastructure} with \textbf{FastAPI} orchestrated by \textbf{LangChain}, deployed on \textbf{Kubernetes} and \textbf{Azure AKS \& VNetwork Cloud} where it fit best; delivered \textbf{sub-2s response times}, \textbf{99.9\% uptime}, and handled \textbf{1K+ concurrent sessions}
-
-  \item \textbf{Advanced RAG system} using \textbf{Weaviate/Qdrant} with hybrid search, chunking policies, and citation tracking for enterprise KBs, enabling \textbf{enhanced answer accuracy} and \textbf{80\% faster} retrieval. \textbf{Knowledge Graphs} using Graphiti with FalkorDB to enhance cross conversation context.
-
-  \item \textbf{Intelligent routing \& cost optimization} via policy-based model selection (complexity, compliance, cost/perf), A/B tests and continuous monitoring; reduced API spend by \textbf{40\%} while preserving quality
-
-  \item \textbf{Led a cross-functional team of 5} (Backend, Frontend, DevOps, ML) with Agile practices, code reviews, automated tests, \textbf{Dockerize (Docker)} all service, K8s - Helm deployment and CI/CD; shipped weekly, zero-downtime releases, and owned product metrics end-to-end (from discovery, prioritisation, design, build, run)
+  \item \textbf{Ledger-first estate-finance platform for Yoma Group (sole engineer, 1,500+ commits).} Rebuilt a live property-management and treasury system from PHP/Laravel onto FastAPI, Python 3.12 and async SQLAlchemy 2 with schema-per-tenant PostgreSQL: 32 bounded modules including customer cutover, transactional outbox, dead-letter queue and reconciliation; 980+ test files behind an 80\% coverage floor on the money core. Graded 235 legacy business rules across 39 modules, cited to file and line on both sides, before any customer moved.
+  \item \textbf{Payments and PCI boundary.} Isolated cardholder data into its own billing service, database and network, with the boundary enforced by a static import ban guarded in CI; integrated 2C2P card payments with idempotent callbacks and three-way reconciliation, and built a Wave Money wallet prototype on the same gateway. Ledger balance and row immutability are enforced by database triggers; a single fixed-point money type fails closed on floats.
+  \item \textbf{Urban intelligent-traffic platform for Ho Chi Minh City (architect and sole engineer, 840 commits).} Three-tier design for 400+ cameras: Jetson edge nodes on K3s with ONVIF/RTSP ingest and H.265 filtering (75\% less bandwidth), YOLO inference on TensorRT/Triton (P95 85 ms), Kafka with mTLS and per-tenant ACLs, PyFlink exactly-once ingestion measured at 71K events/s, GDPR-pseudonymised plate data. 12,700+ tests, ArgoCD edge fleet, 69-diagram C4 architecture set.
+  \item \textbf{Yoma Bank and Star City.} Built Yoma Bank's microfinance lending MVP in Java 21 / Spring Boot 3.3 (16 Gradle modules, hexagonal, jOOQ, Kafka, Flyway) and led its bilingual culture-survey build; owned the money, auth and payment seams on the Star City Living resident platform with a nine-person team, closing auth-enumeration, TOCTOU and privilege-escalation findings.
+  \item \textbf{Trustonic device-management migration.} Tuned the PySpark / AWS Glue / Airflow jobs moving customers between platform generations (vectorised batch validation, broadcast joins, keyed DynamoDB reads, measured Redis partitioning) and owned the per-customer rollback job across PostgreSQL and DocumentDB.
 \end{itemize}
 
 \divider
 
-\cvevent{Senior Software Engineer}{Trustify Technology}{Jan 2024 -- Mar 2025 | Full-time}{Ho Chi Minh City, Vietnam}
+\cvevent{Founder \& Principal Engineer}{Pilot Space (open-source AI infrastructure)}{Jan 2026 -- Present}{Remote}
+
+\begin{itemize}
+  \item \textbf{Moon.} Redis-compatible in-memory store written from scratch in Rust: RESP2/RESP3, 250+ commands, replication, io\_uring runtime, vector, BM25 and graph search, MVCC. 30 releases to v0.8.9 on crates.io and PyPI; measured 1.62\texttimes{} GET and 1.32\texttimes{} SET against Redis 7.0 with 8--22\% less memory per key, losing rows published. Fuzzing on every PR, loom and crash-injection recovery tests, CI-gated unsafe policy.
+  \item \textbf{Lunaris and Helios.} Agent-memory engine on Moon with p50 recall of 19--22 ms at 100K documents per scope and a CI perf gate that fails on 5\% regression (crates.io, npm). Helios is a 48-crate Rust agent harness: 12 provider backends, native MCP client and server, WASM-sandboxed extensions, explicit timeout, retry and circuit-breaker policy on every outbound call.
+  \item \textbf{Hydroa and Pilot Space.} Multi-tenant LLM gateway (Envoy ext\_authz in front of FastAPI, 6 providers, per-tenant and per-provider circuit breakers, BYOK keys encrypted at rest, cost ledger reconciled against provider billing, OpenTelemetry) with 4,600 tests and CI sharded from 80 minutes to 15; an AI-augmented SDLC platform on the same stack with PostgreSQL row-level security on every table and 5,300 tests.
+  \item \textbf{ADD.} Published spec-first, red/green AI-driven development method (\texttt{@pilotspace/add} on npm, \texttt{pilotspace-add} on PyPI; v3.6, 36 releases, about 1.2K downloads a month); the working method on the client platforms above.
+\end{itemize}
+
+\newpage
+
+\cvevent{Technical Lead}{ClickAI Viet Nam}{Jun 2024 -- Oct 2025 (concurrent)}{Ho Chi Minh City, Vietnam}
 
 \begin{minipage}{\linewidth}
 \justifying
-Technology consulting firm specializing in enterprise software solutions and AI/ML App integration.
+Conversational AI platform (\href{https://clickai.vn}{clickai.vn}) with multi-modal chat, image and audio generation and community features, serving 40K+ users across Southeast Asia. Top committer (2,300+ commits across 14 repositories) on a 12--14 person product team.
 \end{minipage}
 
-\medskip
+\smallskip
 
 \begin{itemize}
-  \item \textbf{Architected enterprise-grade software systems} serving using \textbf{Python, Node.js} with microservices architecture, implementing CQRS pattern and event sourcing, achieving \textbf{sub-200ms API response times} and \textbf{99.95\% availability} on \textbf{Azure Kubernetes Service}
-  
-  \item \textbf{Developed AI-powered software applications} integrating machine learning models into production systems, implementing ML pipelines with automated training, testing, and deployment, improving business decision accuracy by \textbf{35\%} across 10+ enterprise clients
-  
-  \item \textbf{Led software engineering team of 6 developers}, implementing \textbf{Agile/Scrum methodologies}, code review processes, and automated testing frameworks, establishing software quality metrics that resulted in \textbf{40\% faster delivery cycles} and \textbf{95\% code coverage}
-  
-  \item \textbf{Designed scalable API architecture} with GraphQL and RESTful services, implemented database optimization strategies using indexing and query optimization, reducing response time by \textbf{60\%} and supporting \textbf{10M+ daily transactions}
-    
+  \item \textbf{Billing engine.} Sole author of wallets, plans, promotions, referral commissions and a month-partitioned PostgreSQL transaction ledger metering every LLM call. A reconciliation check I wrote found provider billing had drifted 30\%+ from metered cost; fixed the ledger model and indexes, added source-event idempotency and promoted the check to a standing job.
+  \item \textbf{Model platform.} Maintained a customised Dify fork for 17 months (640+ commits, 11.7K lines of new API surface, 20 model providers plus a custom one, vector-memory layer, reasoning-model support) and a 42K-line generation service fanning out to 7 backends (ComfyUI, Replicate, fal.ai, ElevenLabs, OpenAI) behind circuit breakers, retries and webhook reconciliation. Policy-based model routing cut LLM API spend by 20\%.
+  \item \textbf{Production ownership.} Authored the 13-service Helm umbrella on Kubernetes (Azure) with cert-manager, probes and autoscaling, Weaviate and Qdrant vector stores; moved PostgreSQL to a 3-node Patroni HA cluster after a saturation incident; sub-2s responses at 99.9\% uptime over 1K+ concurrent sessions.
+  \item \textbf{Identity and web.} OAuth (Google, Microsoft), TOTP, refresh-token rotation and a sync-to-async SQLAlchemy migration of the identity service; 400 commits on the 145K-line Next.js 14 client (SSE streaming, organisation workspaces, RBAC, i18n).
 \end{itemize}
 
-\cvsubsection{Previous Experience (2019-2023)}
+\cvsubsection{Earlier Experience (2018 -- 2024)}
 
-\cvevent{Senior Data Engineer}{Asia Commercial Bank - ACB}{Aug 2023 -- Jun 2024}{}
+\newcommand{\pastrole}[3]{\noindent\textbf{#1}, #2 \textcolor{accent}{\textbullet} #3 --- }
+\begin{itemize}[leftmargin=*,noitemsep,topsep=2pt]
+  \item \pastrole{Senior Data Engineer}{Asia Commercial Bank (ACB)}{Aug 2023 -- Jun 2024}Enterprise data lake on Cloudera at 5M+ daily transactions; a Dagster and PySpark data-quality framework across six quality dimensions cut manual verification by 80\%; FastAPI services consumed by 100+ internal applications.
+  \item \pastrole{Software Data Engineer}{Vietmoney Corp}{Mar 2021 -- Aug 2023}Fintech appraisal and lending platform at 10M+ daily transactions on GCP, 99.9\% uptime. Price forecasting at 96\% accuracy cut appraisal from 15 minutes to 5 seconds; Vietnamese NER at 96\% F1; a distributed Scrapy, Pub/Sub and Kubernetes crawler doubled throughput across 50+ sources; BigQuery Kimball warehouse over 1TB+.
+  \item \pastrole{Software Developer}{Dai Phat Solutions}{Aug 2019 -- Mar 2021}CCTV analytics at 15 FPS for 20+ clients cut reported incidents by 40\%; face recognition at 92\% accuracy over 1,000+ employees; published \texttt{dpsutil} to PyPI (44 releases: mmap vector pools, Blosc compression, Kafka, TurboJPEG and FFmpeg media I/O).
+  \item \pastrole{Full-stack Developer}{LogiGear Corporation}{Jun 2018 -- Mar 2019}Web3 wallet, smart-contract and liquidity-pool management on Ethereum with MetaMask; Node.js and React.
+\end{itemize}
+
+\cvsection{Open Source}
+
 \begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
-    \item Architected enterprise data lake on Cloudera ecosystem processing 5M+ daily transactions with 99.9\% accuracy. Built automated data quality frameworks using Apache Spark, reducing manual verification by 80\%. Developed FastAPI-based RESTful APIs serving 100+ internal banking applications
+  \item \textbf{Moon}, \textbf{Lunaris} and \textbf{ADD} at \href{https://github.com/pilotspace}{github.com/pilotspace} (see above). \textbf{yowo} on PyPI: multi-backend YOLO inference and export (TensorRT, ONNX Runtime, CoreML, OpenVINO) with ByteTrack and CLIP-ReID tracking, 2,100+ tests. \textbf{fastapi-multi-tenant} (429 tests), \textbf{rjson} (Rust-backed JSON for Python), \textbf{dpsutil}, \href{https://github.com/vietmoney/face-anti-spoofing}{\textbf{face-anti-spoofing}} (founded at Vietmoney).
 \end{itemize}
-
-\smallskip
-
-\cvevent{Software Data Engineer}{Vietmoney Corp}{Mar 2021 -- Aug 2023}{}
-\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
-    \item Developed enterprise fintech platform processing 10M+ daily transactions on GCP with 99.9\% uptime.Built ML applications: price forecasting (96\% accuracy), Vietnamese NER (96\% F1), graph-based systems (20K+ nodes).Architected distributed web scraping achieving 2x performance (1,000+ pages/hour) across 50+ platforms
-\end{itemize}
-
-\smallskip
-
-\cvevent{Software Developer}{Dai Phat Solutions}{Aug 2019 -- Mar 2021}{}
-\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
-    \item Built enterprise AI/ML Security Camera AI system (15 FPS processing) serving 20+ clients, reducing incidents by 40\%. Developed face recognition system (92\% accuracy) for 1,000+ employee database, reducing manual processing by 90\%
-\end{itemize}
-
-\cvevent{Full-stack Software Developer}{LogiGear Corporation}{Jun 2018 -- Mar 2019}{}
-\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
-    \item Design and develop a web3 application for users can manage their wallets, contracts, and pools. It provides features for users to exchange transactions (trade, invest, etc.) in blockchain smart contracts via MetaMask to Ethereum Network.
-\end{itemize}
-
-\smallskip
 
 \cvsection{Technical Skills}
 
-  \textbf{Programming:} \cvtagstrong{Python} \cvtagstrong{TypeScript} \cvtagstrong{Node.js} \cvtagstrong{Java} \cvtag{Golang} \cvtagstrong{SQL} \cvtag{Rust}
+\skillrow{Languages}{Python (typed, async), Rust (Tokio, Axum, SQLx), TypeScript / Node.js, SQL / PL/pgSQL, Java (Spring Boot), Bash}
+\skillrow{Backend \& architecture}{FastAPI, SQLAlchemy 2, Pydantic, Next.js / React, clean and hexagonal architecture, DDD, CQRS, event sourcing, multi-tenancy, outbox, idempotency, PCI boundaries, OAuth / OIDC}
+\skillrow{AI / ML}{PyTorch, YOLO, TensorRT, ONNX Runtime, Triton, OpenCV, LLM routing and gateways, RAG, agent memory, MCP, evals, guardrails}
+\skillrow{Data \& streaming}{Kafka, PyFlink, PySpark, AWS Glue, Airflow, Dagster, BigQuery, Databricks / Delta Lake, DuckDB}
+\skillrow{Datastores}{PostgreSQL (Patroni HA, RLS, partitioning), Redis, MongoDB / DocumentDB, DynamoDB, Weaviate, Qdrant}
+\skillrow{Cloud \& DevOps}{Docker, Kubernetes, K3s, Helm, ArgoCD, GitHub Actions, Azure, AWS (ECS, Glue, S3, RDS), GCP, Prometheus, OpenTelemetry}
 
-\smallskip
-  	\textbf{AI/ML:} \cvtagstrong{PyTorch}  \cvtagstrong{LangChain} \cvtagstrong{vLLM} \cvtagstrong{Scikit-learn} \cvtagstrong{OpenCV} \cvtagstrong{Transformers} \cvtagstrong{Prompt Engineering}
+\cvsection{Education, Teaching \& Certifications}
 
-\smallskip
-  
-  \textbf{Web \& APIs:} \cvtagstrong{FastAPI} \cvtagstrong{Flask} \cvtagstrong{React} \cvtagstrong{Next.js} \cvtag{WebSockets/SSE} \cvtagstrong{RESTful APIs} \cvtagstrong{Microservices}
-
-\smallskip
-  \textbf{DevOps \& Cloud:} \cvtagstrong{Docker} \cvtagstrong{Kubernetes \& Helm} \cvtagstrong{Git}  \cvtagstrong{Google Cloud Platform} \cvtagstrong{Microsoft Azure} \cvtagstrong{Prometheus}
-
-\smallskip
-  \textbf{Databases:} \cvtagstrong{PostgreSQL} \cvtagstrong{MySQL} \cvtagstrong{MongoDB} \cvtagstrong{Redis} \cvtagstrong{Weaviate} \cvtagstrong{Qdrant} \cvtagstrong{Google BigQuery} \cvtag{ELK} 
-
-\medskip
-
-\cvsection{Certifications \& Languages}
-
-\textbf{Professional Certifications:}
-\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
-    \item \href{https://www.credential.net/f16b9afc-1d7a-4427-b7e3-f0bf76cd75ae}{Google Cloud Technical Series - AI Agents edition} (Google Cloud, 2025)
-    \item \href{https://s3-us-west-2.amazonaws.com/udacity-printer/production/certificates/0ad10fbf-13db-4f96-b196-a108e3bff2b2.pdf}{AWS Machine Learning Foundations} (Udacity, 2022)
-    \item Agile Software Development with Scrum (Axon Active Vietnam, 2017)
+\begin{itemize}[leftmargin=*,noitemsep,topsep=2pt]
+  \item \textbf{BSc Computer Science (High-Quality Program)}, Ton Duc Thang University, 2015 -- 2019, GPA 3.2. Research Intern, NewAI Lab TDTU (2018).
+  \item \textbf{Teaching:} Instructor, Design Patterns course, Ton Duc Thang University (2022); Data Analysis Mentor, MindX Technology School (2023); Speaker, AI Workshop, FPT University (2025).
+  \item \textbf{Certifications:} \href{https://www.credential.net/f16b9afc-1d7a-4427-b7e3-f0bf76cd75ae}{Google Cloud Technical Series -- AI Agents} (2025); \href{https://s3-us-west-2.amazonaws.com/udacity-printer/production/certificates/0ad10fbf-13db-4f96-b196-a108e3bff2b2.pdf}{AWS Machine Learning Foundations}, Udacity (2022); Agile Software Development with Scrum, Axon Active (2017). \textbf{Languages:} English, Vietnamese.
 \end{itemize}
 
-\smallskip
-\textbf{Languages:} English, Vietnamese
-
-\smallskip
-
-\textbf{All Project \& Certificates at my linkedin profile. Please check it if you interested in my best.} \linkedin{TinDang97}
 \end{document}
