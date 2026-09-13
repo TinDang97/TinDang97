@@ -57,7 +57,7 @@
 \begin{document}
 \fontsize{8.9pt}{9.6pt}\selectfont
 \name{Tin Dang Huynh Trung}
-\tagline{Senior Software Engineer -- LLM Infrastructure, Backend \& Distributed Systems}
+\tagline{Senior AI/LLM Engineer -- Python, Retrieval \& Production LLM Systems}
 \photoR{2.2cm}{avatar}
 
 \personalinfo{%
@@ -72,7 +72,7 @@
 
 \begin{minipage}{\linewidth}
 \justifying
-Eight years building production backend systems in Python, Rust and TypeScript, with machine learning in production since 2019 and the last two years on the infrastructure under AI products: multi-provider LLM gateways, routing with failover, cost metering that reconciles against what providers actually bill, agent memory and MCP. I came to this from fintech and build it the same way --- correctness enforced by structure rather than convention: append-only ledgers, multi-tenancy that fails closed, money that cannot move twice. Most of my code is now written by an agent; judging whether it is correct stays mine, under a verification discipline I wrote, published and benchmarked.
+Eight years building production backend systems, mostly Python, with machine learning in production since 2019 and the last two years on LLM infrastructure: multi-provider gateways and policy routing with failover, retrieval and agent memory, MCP, and cost metering that reconciles against what providers actually bill. The part I care most about is the part most teams skip --- proving the output is still right after the next change, with evaluation gates that run in CI rather than a spot check before release. I came to this from fintech and build it the same way --- correctness enforced by structure rather than convention: append-only ledgers, multi-tenancy that fails closed, money that cannot move twice. Most of my code is now written by an agent; judging whether it is correct stays mine, under a verification discipline I wrote, published and benchmarked.
 \end{minipage}
 
 \cvsection{Professional Experience}
@@ -85,21 +85,13 @@ I architect and lead client rebuilds across Vietnam and Myanmar --- fintech, rea
 \end{minipage}
 
 \begin{itemize}[itemsep=0pt,topsep=1pt,parsep=0pt]
-  \item \proj{Estate-finance platform}{Yoma Group --- sole engineer \& architect}
-  The legacy system kept balances in rows anyone could edit, so I rebuilt it off PHP/Laravel onto a single append-only double-entry ledger where every balance can be re-derived and audited, with per-customer cutover, an outbox and reconciliation around it. Before anyone moved I graded 235 legacy business rules against the new system and published the gaps.
-  \stack{Python 3.12 · FastAPI · async SQLAlchemy 2 · PostgreSQL (schema-per-tenant) · Redis · Next.js · AWS ECS · Envoy}
+  \item \proj{Estate-finance platform \& PCI boundary}{Yoma Group, Wave Money --- sole engineer \& architect}
+  I rebuilt a live property-finance system off PHP/Laravel onto a single append-only double-entry ledger where every balance can be re-derived and audited, graded 235 legacy business rules against it before anyone moved, and shipped it in eight releases over four weeks. Cardholder data sits behind its own service, database and network, so only that service falls inside PCI scope and the build rejects any import that crosses the boundary.
+  \stack{Python 3.12 · FastAPI · async SQLAlchemy 2 · PostgreSQL (schema-per-tenant) · Redis · Docker · 2C2P · AWS ECS · Envoy}
 
-  \item \proj{Card payments \& PCI boundary}{Yoma Group, Wave Money}
-  I put cardholder data behind its own service, database and network so that only that service falls inside PCI scope, and made the build reject any import that crosses the boundary. Card payments run through 2C2P with callbacks that are safe to retry and a three-way reconciliation behind them.
-  \stack{Python · FastAPI · PostgreSQL · 2C2P · Docker}
-
-  \item \proj{Real-time ML serving at the edge}{Ho Chi Minh City --- architect \& sole engineer}
-  400 camera streams produce more video than a city network can carry, so I moved inference to the edge and sent only events onward: YOLO models served on TensorRT and Triton hold a P95 of 85\,ms, Jetson nodes cut backhaul by 75\%, and events reach the data centre over mutually authenticated Kafka. I load-tested the pipeline to 71K events a second before adopting it.
-  \stack{Python · FastAPI · Kafka · PyFlink · TensorRT · Triton · K3s · ArgoCD · Jetson · DuckDB}
-
-  \item \proj{Device-management migration}{Trustonic}
-  A customer could only be moved if they could be moved back, so I owned the rollback across PostgreSQL and DocumentDB. Rehearsing it is what found the gap: Postgres reverted cleanly, the document store, cache and archived objects did not --- which is the difference between a rollback plan and a rollback. I tuned the migration jobs alongside it: vectorised validation, broadcast joins in place of shuffles, and keyed DynamoDB reads so a run never scans a live table.
-  \stack{PySpark · AWS Glue · Airflow · DynamoDB · PostgreSQL · DocumentDB · Redis · boto3}
+  \item \proj{Real-time ML serving at the edge}{intelligent transport --- architect \& sole engineer}
+  400 camera streams produce more video than a city network can carry, so I moved inference to the edge and sent only events onward: YOLO on TensorRT and Triton at a P95 of 85\,ms, 75\% less backhaul, events reaching the data centre over mutually authenticated Kafka, load-tested to 71K events a second. On a separate device-management migration, rehearsing the rollback is what found the gap --- Postgres reverted cleanly, the document store, cache and archived objects did not.
+  \stack{Python · FastAPI · Kafka · PyFlink · TensorRT · Triton · K3s · ArgoCD · DuckDB · PySpark · Airflow}
 \end{itemize}
 
 \divider
@@ -131,12 +123,12 @@ I co-founded ClickAI (\href{https://clickai.vn}{clickai.vn}) and built its conve
 
 \begin{itemize}[itemsep=0pt,topsep=1pt,parsep=0pt]
   \item \proj{Hydroa}{multi-tenant LLM gateway}
-  A gateway that meters what each tenant spends on LLMs. Envoy authorises at the edge, six providers sit behind per-tenant and per-provider circuit breakers, customer keys are encrypted at rest, and a cost ledger reconciles against what the providers actually billed.
+  One OpenAI-compatible endpoint over OpenAI, Anthropic, Gemini, Bedrock, Azure and OpenRouter, metering what each tenant spends. Envoy authorises at the edge, providers sit behind per-tenant and per-provider circuit breakers, customer keys are encrypted at rest, and a cost ledger reconciles against what was actually billed. Tests outweigh source two to one by line.
   \stack{Python · FastAPI · Envoy · PostgreSQL · Kubernetes · OpenTelemetry}
 
-  \item \proj{\href{https://pilotspace.github.io/lunaris/}{Lunaris} \& Helios}{agent memory and agent harness}
-  Lunaris recalls across 100K documents per scope in 19--22\,ms at the median, held by a 5\% perf-regression cliff in CI and a separate recall-quality ratchet. Helios is the harness that consumes it: 12 provider backends, a native MCP client and server, WASM-sandboxed extensions, and a circuit breaker on every outbound call.
-  \stack{Rust · Tokio · MCP · Wasmtime · npm}
+  \item \proj{\href{https://pilotspace.github.io/lunaris/}{Lunaris} \& Helios}{retrieval pipeline and agent harness}
+  Lunaris is ingest, extraction, embeddings, vector search and reranking behind one API, recalling across 100K documents per scope in 19--22\,ms at the median. Its quality is gated rather than asserted: CI scores LongMemEval-S evidence recall judge-free, on both operating points, and fails the build when recall drops past tolerance or the retrieval config moves under the baseline. I wrote that gate after finding its predecessor had never once run --- 200 of 200 recorded executions were startup failures, so nothing had been gated at all. Helios consumes it: 12 provider backends, a native MCP client and server, and a circuit breaker on every outbound call.
+  \stack{Rust · Tokio · llama.cpp embeddings · MCP · Wasmtime · npm / PyPI / crates.io}
 
   \item \proj{\href{https://pilotspace.github.io/moon/}{Moon}}{Redis-compatible in-memory store, written from scratch}
   Existing Redis clients connect unchanged: RESP2/RESP3, 250+ commands, and native vector, BM25 and graph search under MVCC. Thirty releases to v0.8.9, measuring 1.62\texttimes{} on GET and 1.32\texttimes{} on SET against Redis 7.0 with 8--22\% less memory per key --- published alongside the command families where it loses.
@@ -170,12 +162,12 @@ I co-founded ClickAI (\href{https://clickai.vn}{clickai.vn}) and built its conve
 
 \cvsection{Technical Skills}
 
-\skillrow{AI \& LLM infrastructure}{Multi-provider gateways, policy routing \& failover, token metering \& cost reconciliation, agent memory, MCP (client \& server), agent-assisted delivery (frozen contracts, RED/GREEN gates, verification receipts), RAG, vector search (Weaviate, Qdrant); PyTorch, YOLO, TensorRT, Triton, ONNX Runtime}
-\skillrow{Languages \& backend}{Python (typed, async), Rust, TypeScript / Node.js, Java, SQL; FastAPI, SQLAlchemy 2, Tokio, Next.js / React; hexagonal architecture, CQRS, event sourcing, multi-tenancy, outbox \& idempotency, PCI boundaries, OAuth / OIDC}
+\skillrow{AI \& LLM}{Multi-provider gateways, policy routing \& failover, and cost/latency/quality tradeoffs across OpenAI, Anthropic, Gemini, Bedrock, Azure and OpenRouter; token metering \& cost reconciliation; RAG and retrieval --- embeddings, vector search, reranking (Weaviate, Qdrant); agent memory, MCP (client \& server), prompt \& agent orchestration; LLM evaluation harnesses and CI regression gates; PyTorch, YOLO, TensorRT, Triton, ONNX Runtime}
+\skillrow{Languages \& backend}{Python (typed, async), Rust, TypeScript / Node.js, Java, SQL; FastAPI, SQLAlchemy 2, Pydantic, pytest, Tokio, Next.js / React; Docker; functional \& integration testing, agent-assisted delivery (frozen contracts, RED/GREEN gates, verification receipts); hexagonal architecture, CQRS, event sourcing, multi-tenancy, outbox \& idempotency, PCI boundaries, OAuth / OIDC}
 \skillrow{Data, storage \& cloud}{PostgreSQL (Patroni HA, RLS, partitioning), Redis, MongoDB, DynamoDB, DuckDB; Kafka, PyFlink, PySpark, Glue, Airflow, BigQuery; Kubernetes, Helm, Envoy, OpenTelemetry, AWS, Azure, GCP}
 
 \cvsection{Education, Teaching \& Certifications}
 
-\noindent\footnotesize\textbf{BSc Computer Science}, Ton Duc Thang University, 2015--2019. \textbf{Teaching:} Design Patterns instructor, Ton Duc Thang (2022); mentor, MindX (2023); speaker, AI Workshop, FPT University (2025). \textbf{Certifications:} \href{https://www.credential.net/f16b9afc-1d7a-4427-b7e3-f0bf76cd75ae}{Google Cloud AI Agents} (2025); \href{https://s3-us-west-2.amazonaws.com/udacity-printer/production/certificates/0ad10fbf-13db-4f96-b196-a108e3bff2b2.pdf}{AWS ML Foundations} (2022). \textbf{Languages:} English, Vietnamese.
+\noindent\footnotesize\textbf{BSc Computer Science}, Ton Duc Thang University, 2015--2019. \textbf{Teaching:} Design Patterns instructor, Ton Duc Thang (2022); mentor, MindX (2023); speaker, AI Workshop, FPT University (2025). \textbf{Certifications:} \href{https://www.credential.net/f16b9afc-1d7a-4427-b7e3-f0bf76cd75ae}{Google Cloud AI Agents} (2025); \href{https://s3-us-west-2.amazonaws.com/udacity-printer/production/certificates/0ad10fbf-13db-4f96-b196-a108e3bff2b2.pdf}{AWS ML Foundations} (2022). \textbf{Languages:} English --- the working language of all my published code, documentation and benchmark reports; Vietnamese.
 
 \end{document}
