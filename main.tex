@@ -72,7 +72,7 @@
 
 \begin{minipage}{\linewidth}
 \justifying
-Eight years building production backend systems, mostly Python, with machine learning in production since 2019 and the last two years on LLM infrastructure: multi-provider gateways and policy routing with failover, retrieval and agent memory, MCP, and cost metering that reconciles against what providers actually bill. The part I care most about is the part most teams skip --- proving the output is still right after the next change, with evaluation gates that run in CI rather than a spot check before release. I came to this from fintech and build it the same way --- correctness enforced by structure rather than convention: append-only ledgers, multi-tenancy that fails closed, money that cannot move twice. Most of my code is now written by an agent; judging whether it is correct stays mine, under a verification discipline I wrote, published and benchmarked.
+I'm a backend engineer, mostly Python, eight years in. I've had machine learning running in production since 2019, and for the last two years I've worked on the infrastructure under LLM products: multi-provider gateways, routing and failover, retrieval, agent memory, MCP, and metering that reconciles against what providers actually bill. The thing I keep coming back to is evaluation --- shipping an LLM feature that looks right is easy, knowing it's still right three changes later is not, so I put that in CI rather than checking by hand before a release. I started in fintech and I still build like it: append-only ledgers, tenancy that fails closed, money that can't move twice. An agent writes most of my code now; deciding whether it's correct is still my job, and I published the method I use for that.
 \end{minipage}
 
 \cvsection{Professional Experience}
@@ -168,6 +168,9 @@ I co-founded ClickAI (\href{https://clickai.vn}{clickai.vn}) and built its conve
 
 \cvsection{Education, Teaching \& Certifications}
 
-\noindent\footnotesize\textbf{BSc Computer Science}, Ton Duc Thang University, 2015--2019. \textbf{Teaching:} Design Patterns instructor, Ton Duc Thang (2022); mentor, MindX (2023); speaker, AI Workshop, FPT University (2025). \textbf{Certifications:} \href{https://www.credential.net/f16b9afc-1d7a-4427-b7e3-f0bf76cd75ae}{Google Cloud AI Agents} (2025); \href{https://s3-us-west-2.amazonaws.com/udacity-printer/production/certificates/0ad10fbf-13db-4f96-b196-a108e3bff2b2.pdf}{AWS ML Foundations} (2022). \textbf{Languages:} English --- the working language of all my published code, documentation and benchmark reports; Vietnamese.
+\skillrow{Education}{BSc Computer Science (High-Quality Program), Ton Duc Thang University, 2015--2019}
+\skillrow{Teaching \& speaking}{Design Patterns instructor, Ton Duc Thang University (2022); data-analysis mentor, MindX (2023); speaker, AI Workshop, FPT University (2025)}
+\skillrow{Certifications}{\href{https://www.credential.net/f16b9afc-1d7a-4427-b7e3-f0bf76cd75ae}{Google Cloud Technical Series --- AI Agents} (2025); \href{https://s3-us-west-2.amazonaws.com/udacity-printer/production/certificates/0ad10fbf-13db-4f96-b196-a108e3bff2b2.pdf}{AWS Machine Learning Foundations} (2022)}
+\skillrow{Languages}{English --- the working language of all my published code, documentation and benchmark reports; Vietnamese}
 
 \end{document}
