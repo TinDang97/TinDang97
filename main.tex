@@ -58,7 +58,10 @@
 \fontsize{8.9pt}{9.6pt}\selectfont
 \name{Tin Dang Huynh Trung}
 \tagline{Senior AI/LLM Engineer -- Python, Retrieval \& Production LLM Systems}
-\photoR{2.2cm}{avatar}
+% Photo is opt-out, so both variants build from this one source:
+%   pdflatex main.tex                                       -> with photo
+%   pdflatex -jobname=main-nophoto "\def\nophoto{1}\input{main.tex}"  -> without
+\ifdefined\nophoto\else\photoR{2.2cm}{avatar}\fi
 
 \personalinfo{%
   \email{tindang.ht97@gmail.com}

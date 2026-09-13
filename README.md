@@ -1,6 +1,8 @@
 # Tin Dang
 
-**Senior Software Engineer — Backend, AI Platforms & Distributed Systems** · Ho Chi Minh City, Viet Nam · [CV (PDF)](./main.pdf)
+**Senior AI/LLM Engineer — Python, Retrieval & Production LLM Systems** · Ho Chi Minh City, Viet Nam
+
+CV: [with photo](./main.pdf) · [without photo](./main-nophoto.pdf) — same content; the second is for US/UK/Canada/Australia and anywhere else that screens blind.
 
 ## Social
 
