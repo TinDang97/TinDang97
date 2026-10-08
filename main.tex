@@ -6,12 +6,11 @@
 \PassOptionsToPackage{dvipsnames}{xcolor}
 \documentclass[10pt,a4paper,ragged2e,withhyper]{altacv}
 
-\geometry{left=1.35cm,right=1.35cm,top=1.0cm,bottom=1.0cm}
+\geometry{left=1.2cm,right=1.2cm,top=0.75cm,bottom=0.6cm}
 
 \usepackage{ragged2e}
 \usepackage{xurl}
 \usepackage{textcomp}
-\usepackage{needspace}
 
 \ifxetexorluatex
   \setmainfont{Roboto Slab}
@@ -36,45 +35,33 @@
 \colorlet{emphasis}{SlateGrey}
 \colorlet{body}{LightGrey}
 
-% altacv calls \normalsize after every \cvevent, so the body size is set here
-% rather than with a one-off \fontsize at the top of the document.
-\renewcommand{\normalsize}{\fontsize{9.3pt}{11.3pt}\selectfont}
-
 \renewcommand{\namefont}{\Huge\rmfamily\bfseries}
 \renewcommand{\personalinfofont}{\footnotesize}
-\renewcommand{\cvsectionfont}{\large\rmfamily\bfseries}
+\renewcommand{\cvsectionfont}{\normalsize\rmfamily\bfseries}
 \renewcommand{\cvsubsectionfont}{\normalsize\bfseries}
 \renewcommand{\itemmarker}{{\small\textbullet}}
 \renewcommand{\ratingmarker}{\faCircle}
 
 % One-line skill row: bold label followed by plain, wrapping text.
-\newcommand{\skillrow}[2]{\noindent\textbf{\textcolor{emphasis}{#1:}} #2\par\vspace{2.5pt}}
+\newcommand{\skillrow}[2]{\noindent\small\textbf{#1:} #2\par\vspace{3pt}}
 
-% Project entry: a title line, one sentence of context, achievement bullets, then the stack.
-\newcommand{\project}[2]{\par\needspace{5\baselineskip}\vspace{4pt}\noindent\textbf{\textcolor{emphasis}{#1}} \textcolor{accent}{\textbullet} \textit{#2}\par\nobreak\vspace{1pt}}
-\newcommand{\lead}[1]{\noindent #1\par\nobreak}
-\newcommand{\stack}[1]{\par\nobreak\vspace{1pt}\noindent{\footnotesize\textcolor{emphasis}{#1}}\par}
-% No page break between the lead and the first bullet, or between the last bullet and the stack line.
-\makeatletter
-\newenvironment{wins}{\@beginparpenalty=\@M\@endparpenalty=\@M\begin{itemize}[leftmargin=1.1em,itemsep=1pt,topsep=2pt,parsep=0pt,after=\vspace{0pt}]}{\end{itemize}}
-\makeatother
+% Project entry: title, client, then a tech-stack line underneath.
+\newcommand{\proj}[2]{\textbf{#1} \textcolor{accent}{\textbullet} \textit{#2}\newline}
+\newcommand{\stack}[1]{\newline{\scriptsize\textcolor{emphasis}{#1}}}
 
-% The result a bullet opens on.
+% Compact past role: bold title, company, dates, then the description.
+\newcommand{\pastjob}[3]{\textbf{#1}, #2 \textcolor{accent}{\textbullet} #3\newline}
+
+% The result a sentence opens on.
 \newcommand{\win}[1]{\textbf{\textcolor{emphasis}{#1}}}
 
 % Portfolio entry: name, where to find it, then what it is and what it measures.
-% Role header on one line: title, employer, then dates and place flushed right.
-\newcommand{\role}[4]{\par\noindent{\large\textbf{\textcolor{emphasis}{#1}}}\ \ \textbf{\textcolor{accent}{#2}}\hfill{\small #3 \textcolor{accent}{\textbullet} #4}\par\nobreak\vspace{2pt}}
-
-% Role separator: dashed like altacv's \divider, but discardable at the top of a page.
-\newcommand{\rolebreak}{\par\needspace{6\baselineskip}\vspace{4pt}\cleaders\vbox to 0.6pt{\vss\hbox{\textcolor{body!30}{\hdashrule{\linewidth}{0.6pt}{0.5ex}}}\vss}\vskip 0.6pt\vspace{5pt}}
-
 \newcommand{\work}[3]{\par\vspace{5pt}\noindent\textbf{\textcolor{accent}{#1}} \textcolor{accent}{\textbullet} {\footnotesize #2}\par\nobreak\vspace{1pt}\noindent #3\par}
 
 \addbibresource{sample.bib}
 
 \begin{document}
-\normalsize
+\fontsize{9.6pt}{11.6pt}\selectfont
 \name{Tin Dang Huynh Trung}
 \tagline{Senior Software Engineer}
 % Photo is opt-out, so both variants build from this one source:
@@ -91,108 +78,107 @@
 }
 
 \makecvheader
-\justifying
 
-\noindent\textit{\textcolor{accent}{I'm a low-key developer: a cup of coffee, a hard problem, and something useful at the end of it.}}
+\begin{minipage}{\linewidth}
+\justifying
+\textit{\textcolor{accent}{I'm a low-key developer: a cup of coffee, a hard problem, and something useful at the end of it.}}
 
 \smallskip
-
-\noindent Senior software engineer, ten years in --- mostly Python, plus Rust and TypeScript. I've had machine learning in production since 2019: camera analytics and a vector search engine I wrote myself, then fintech pricing and language models, and for the last two years the infrastructure under LLM products --- gateways, routing and failover, retrieval, agent memory, and metering that reconciles against what providers actually bill. I've been CTO of an AI startup and led teams of up to fourteen, and I still keep my hands on the hard parts. I'd rather measure than claim, so retrieval quality is gated in CI and inference is tuned against a P95. An agent writes most of my code now; deciding whether it's correct is still my job, and I published the method I use for that.
+Senior software engineer, ten years in --- mostly Python, plus Rust and TypeScript. I've had machine learning in production since 2019: camera analytics and a vector search engine I wrote myself, then fintech pricing and language models, and for the last two years the infrastructure under LLM products --- gateways, routing and failover, retrieval, agent memory, and metering that reconciles against what providers actually bill. I've been CTO of an AI startup, led teams of up to fourteen, and still keep my hands on the hard parts. I'd rather measure than claim, so retrieval quality is gated in CI and inference is tuned against a P95. An agent writes most of my code now; deciding whether it's correct is still my job, and I published the method I use for that.
+\end{minipage}
 
 \cvsection{Professional Experience}
 
-\role{Technical Architect}{Trustify Technology}{Jan 2024 -- Present}{Ho Chi Minh City}
-\lead{I architect and lead client platforms across Vietnam and Myanmar --- transport, fintech, real estate and investment data for Yoma Group, Yoma Bank, Wave Money, Trustonic and VinaCapital --- and wrote the company's engineering career ladder.}
+\cvevent{Technical Architect}{Trustify Technology}{Jan 2024 -- Present}{Ho Chi Minh City, Vietnam}
 
-\project{Real-time ML serving at the edge}{intelligent transport --- architect \& sole engineer, Sep 2025 -- Mar 2026}
-\begin{wins}
-  \item \win{85\,ms P95 inference across 400 camera streams.} YOLO runs on TensorRT in half precision behind Triton with dynamic batching, and falls back to ONNX Runtime where no GPU is present.
-  \item \win{75\% less backhaul,} from about 2.4\,Gbps to 600\,Mbps: inference and H.265 transcoding run at the roadside and only events travel on, over mutually authenticated Kafka into PyFlink, load-tested to 71K events a second.
-\end{wins}
-\stack{Python · FastAPI · YOLO · TensorRT · Triton · ONNX Runtime · Kafka · PyFlink · K3s · ArgoCD · DuckDB}
+\begin{minipage}{\linewidth}
+\justifying
+I architect and lead client platforms across Vietnam and Myanmar --- transport, fintech, real estate and investment data for Yoma Group, Yoma Bank, Wave Money, Trustonic and VinaCapital --- and wrote the company's engineering career ladder.
+\end{minipage}
 
-\project{Estate-finance platform \& PCI boundary}{Yoma Group, Wave Money --- architect \& sole engineer, Jul -- Sep 2026}
-\begin{wins}
-  \item \win{One append-only double-entry ledger} replaced a live PHP/Laravel system whose balances nobody could audit: thirty modules in eight releases over four weeks, with 235 legacy business rules graded against it before any customer moved.
-  \item \win{PCI scope cut to one service.} Cardholder data sits behind its own service, database and network, and the build rejects any import that crosses the boundary.
-\end{wins}
-\stack{Python 3.12 · FastAPI · async SQLAlchemy 2 · PostgreSQL (schema per tenant) · Redis · 2C2P · AWS ECS · Envoy}
+\begin{itemize}[itemsep=4pt,topsep=3pt,parsep=0pt]
+  \item \proj{Real-time ML serving at the edge}{intelligent transport --- architect \& sole engineer, Sep 2025 -- Mar 2026}
+  400 camera streams are more video than a city network can carry, so I moved inference to the roadside and ship only events. \win{85\,ms P95 inference:} YOLO on TensorRT in half precision behind Triton with dynamic batching, falling back to ONNX Runtime where no GPU is present. \win{75\% less backhaul} (2.4\,Gbps to 600\,Mbps), since H.265 transcoding and frame filtering also run at the edge; events cross mutually authenticated Kafka into PyFlink, load-tested to \win{71K events a second}.
+  \stack{Python · FastAPI · YOLO · TensorRT · Triton · ONNX Runtime · Kafka · PyFlink · K3s · ArgoCD · DuckDB}
 
-\vspace{3pt}
-\lead{\win{Also delivered:} a governed Databricks lakehouse for VinaCapital that took reporting from two days to two hours; the rollback path of Trustonic's per-customer IoT migration, where rehearsing it showed the document store, cache and archived objects did not revert with Postgres; a 2C2P card-payment integration for Wave Money; and Yoma Bank's microfinance lending MVP in Java 21 and Spring Boot.}
+  \item \proj{Estate-finance platform \& PCI boundary}{Yoma Group, Wave Money --- architect \& sole engineer, Jul -- Sep 2026}
+  I replaced a live PHP/Laravel system whose balances nobody could audit with \win{one append-only double-entry ledger}: thirty modules in eight releases over four weeks, with \win{235 legacy business rules graded} against it before any customer moved. \win{PCI scope is one service} --- cardholder data has its own service, database and network, enforced by the build.
+  \stack{Python 3.12 · FastAPI · async SQLAlchemy 2 · PostgreSQL (schema per tenant) · Redis · 2C2P · AWS ECS · Envoy}
 
-\rolebreak
+  \item \proj{Also delivered}{data, migration and payments}
+  A Databricks lakehouse for VinaCapital that cut reporting \win{from two days to two hours}; the rollback path of Trustonic's per-customer IoT migration, where a rehearsal showed the document store, cache and object archive did not revert with Postgres; 2C2P card payments for Wave Money; and a microfinance lending MVP for Yoma Bank in Java 21 and Spring Boot.
+\end{itemize}
 
-\role{CTO -- Co-founder}{ClickAI Viet Nam}{Jun 2024 -- Oct 2025 (concurrent)}{Ho Chi Minh City}
-\lead{I co-founded ClickAI (\href{https://clickai.vn}{clickai.vn}) and built its conversational AI platform from scratch --- multi-modal chat, image and audio generation, community --- to 40K+ users across Southeast Asia inside four months, leading twelve to fourteen people and owning routing, billing and deployment myself.}
-\begin{wins}
-  \item \win{20\% lower API spend.} An orchestration layer routes each request across 20+ model providers by policy --- task complexity, compliance, cost against quality --- with the policies tested against each other in A/B runs.
-  \item \win{Failover before users notice.} After a provider went hard-down and users felt it before routing shifted, I probed every provider continuously and marked one down before traffic could reach it.
-  \item \win{Our own models behind the same gateway:} open-weight LLMs served with vLLM on rented GPUs, LangChain for prompt and agent orchestration, and image and audio generation behind circuit breakers.
-  \item \win{80\% faster retrieval} from hybrid keyword-and-vector search over Weaviate and Qdrant with citation tracking; a Graphiti knowledge graph on FalkorDB carries context from one conversation to the next.
-  \item \win{Caught a 30\% billing drift no alert had seen.} A retry loop was re-sending work; my reconciliation check against the providers' bills found it, and I keyed idempotency on the source event so a retry cannot double-count.
-  \item \win{99.9\% uptime, sub-2s responses, 1K+ concurrent sessions} on the 13-service Kubernetes deployment I authored; a three-node Patroni cluster made losing a database node a non-event, and a hosting comparison halved the bill.
-\end{wins}
-\stack{Python · FastAPI · LangChain · vLLM · Weaviate · Qdrant · FalkorDB · PostgreSQL (partitioned, Patroni) · Redis · Kubernetes · Helm · Azure · Next.js}
+\divider
 
-\rolebreak
+\cvevent{CTO -- Co-founder}{ClickAI Viet Nam}{Jun 2024 -- Oct 2025 (concurrent)}{Ho Chi Minh City, Vietnam}
 
-\role{Founder \& Principal Engineer}{Pilot Space (open-source AI infrastructure)}{Jan 2026 -- Present}{Remote}
-\lead{My own open-source line, each project published with its benchmark: \win{Lunaris} (agent memory; recall over 100K documents in 19--22\,ms), \win{laya-codex} (code retrieval with a re-ranker I fine-tuned; right files in an agent's first answer up from 73\% to 88\%), \win{Moon} (Redis-compatible store with vector, full-text and graph search; 1.62\texttimes{} Redis on GET), \win{Hydroa} (multi-tenant LLM gateway) and \win{ADD} (my method for trusting agent-written code). Details and links are on the last page.}
+\begin{minipage}{\linewidth}
+\justifying
+I co-founded ClickAI (\href{https://clickai.vn}{clickai.vn}) and built its conversational AI platform from scratch --- multi-modal chat, image and audio generation, community --- to 40K+ users across Southeast Asia inside four months, leading twelve to fourteen people and owning routing, billing and deployment myself.
+\end{minipage}
 
-\rolebreak
+\begin{itemize}[itemsep=4pt,topsep=3pt,parsep=0pt]
+  \item \proj{Model platform \& retrieval}{20+ providers}
+  \win{20\% lower API spend:} an orchestration layer routes each request by policy --- task complexity, compliance, cost against quality --- tested in A/B runs. After a provider went hard-down and users felt it before routing shifted, I \win{probed every provider continuously} and marked one down before traffic could reach it. Behind the same gateway sat \win{our own open-weight LLMs on vLLM}, LangChain orchestration, and \win{80\% faster retrieval} from hybrid search over Weaviate and Qdrant with citation tracking; a Graphiti knowledge graph on FalkorDB carries context between conversations.
+  \stack{Python · FastAPI · LangChain · vLLM · Weaviate · Qdrant · FalkorDB · Graphiti · ComfyUI · Replicate · fal.ai · ElevenLabs}
 
-\role{Senior Data Engineer}{Asia Commercial Bank (ACB)}{Aug 2023 -- Jun 2024}{Ho Chi Minh City}
-\begin{wins}
-  \item \win{80\% less manual verification} on a data lake carrying 5M+ transactions a day, from a data-quality framework I built on Spark that checks each data asset across six dimensions; my FastAPI services fed \win{100+ internal applications}.
-\end{wins}
-\stack{Cloudera · PySpark · Dagster · Iceberg · FastAPI}
+  \item \proj{Billing, metering \& production}{sole author --- 99.9\% uptime, 1K+ concurrent sessions}
+  I built the wallet, plan and referral engine over a month-partitioned ledger that meters every LLM call. \win{A reconciliation check I wrote caught a 30\% billing drift} no alert had seen --- a retry loop was re-sending work --- and I keyed idempotency on the source event so a retry cannot double-count. I authored the 13-service Kubernetes deployment, held \win{sub-2s responses}, moved PostgreSQL onto a three-node Patroni cluster when it saturated, and \win{halved the hosting bill}; when a release regressed, my own instrumentation caught it before any customer did.
+  \stack{Python · FastAPI · PostgreSQL (partitioned, Patroni) · Redis · Kubernetes · Helm · Azure · Prometheus · Next.js 14}
+\end{itemize}
 
-\rolebreak
+\newpage
 
-\role{Software Data Engineer}{Vietmoney Corp}{Mar 2021 -- Aug 2023}{Ho Chi Minh City}
-\project{Pricing, language \& vision models}{asset appraisal and lending platform}
-\lead{An appraiser needed fifteen minutes to price a second-hand item by hand, from unstructured Vietnamese listings spread over more than fifty marketplaces.}
-\begin{wins}
-  \item \win{Appraisal from 15 minutes to 5 seconds.} Price forecasting at 96\% accuracy, served as an API on a platform carrying 10M+ daily transactions at 99.9\% uptime.
-  \item \win{96\% F1 on Vietnamese entity extraction.} A named-entity model fine-tuned from BERT turns a listing into structured attributes; anomaly detection removes bad listings, and a 20K-node asset graph links products to their listings.
-  \item \win{Crawler throughput doubled} to 1,000+ pages an hour across 50+ marketplaces on a distributed crawler I designed; I also started the company's open-source face-anti-spoofing.
-\end{wins}
-\stack{Python · PyTorch · BERT · scikit-learn · Prophet · FAISS · Scrapy · Pub/Sub · BigQuery · Airflow · Kubernetes · GCP}
+\cvevent{Founder \& Principal Engineer}{Pilot Space (open-source AI infrastructure)}{Jan 2026 -- Present}{Remote}
 
-\rolebreak
+\begin{minipage}{\linewidth}
+\justifying
+My own open-source line, each project published with its benchmark: \win{Lunaris} (agent memory; recall over 100K documents in 19--22\,ms), \win{laya-codex} (code retrieval with a re-ranker I fine-tuned; right files in an agent's first answer up from 73\% to 88\%), \win{Moon} (Redis-compatible store with vector, full-text and graph search; 1.62\texttimes{} Redis on GET), \win{Hydroa} (multi-tenant LLM gateway) and \win{ADD} (my method for trusting agent-written code). Details and links are on the last page.
+\end{minipage}
 
-\role{Software Developer (AI)}{Dai Phat Solutions}{Aug 2019 -- Mar 2021}{Ho Chi Minh City}
-\project{Camera AI --- vector search engine \& distributed inference}{architect of the camera-AI product}
-\lead{Recognising faces across many cameras needs a similarity lookup on every frame, and the first pipeline showed video three to five seconds late --- too slow for a security alert.}
-\begin{wins}
-  \item \win{Delay cut from 3--5\,s to 1\,s} across 16 cameras at 15 FPS each: I tuned FFmpeg decoding, moved JPEG coding to TurboJPEG, compressed arrays on the wire with Blosc and reused pre-allocated memory for vectors.
-  \item \win{Wrote the vector search engine} on FAISS: named indexes, flat and IVF with training, half-precision GPU indexes that move between GPU and CPU, persistence, and duplicate filtering on insert --- reached through a Kafka request-and-reply client, with vectors held in Redis.
-  \item \win{Optimised model inference.} I exported the detection and face-recognition models from PyTorch to TorchScript, ONNX Runtime and TensorRT, ran them in half precision, and batched frames from several cameras onto one GPU.
-  \item \win{Designed it as a distributed system.} Decoding, detection, embedding and search workers pass frames over Kafka, Pulsar and ZeroMQ, so capacity grows by adding workers and one failed worker does not stop a camera.
-  \item \win{92\% recognition accuracy over 1,000+ identities} removed 90\% of a manual process, and reported incidents fell 40\% across 20+ client deployments.
-\end{wins}
-\stack{Python · PyTorch · RetinaFace · InsightFace · FAISS · TensorRT · ONNX Runtime · Kafka · Pulsar · ZeroMQ · Redis · FFmpeg · Docker}
+\cvsection{Earlier Experience (2018 -- 2024)}
 
-\vspace{4pt}
-\noindent\win{Earlier:} Full-stack Developer, LogiGear Corporation (Jun 2018 -- Mar 2019) --- an Ethereum wallet and smart-contract application in Node.js and React.
+\begin{itemize}[leftmargin=*,itemsep=5pt,topsep=1pt,parsep=0pt]
+  \item \pastjob{Senior Data Engineer}{Asia Commercial Bank (ACB)}{Aug 2023 -- Jun 2024}
+  \win{80\% less manual verification} on a data lake carrying 5M+ transactions a day, from a data-quality framework I built on Spark across six dimensions; my FastAPI services fed 100+ internal applications. {\scriptsize\textcolor{emphasis}{Cloudera · PySpark · Dagster · Iceberg · FastAPI}}
+
+  \item \pastjob{Software Data Engineer}{Vietmoney Corp}{Mar 2021 -- Aug 2023}
+  Pricing, language and vision models for an appraisal and lending platform carrying 10M+ daily transactions at 99.9\% uptime. \win{Appraisal fell from 15 minutes to 5 seconds} on price forecasting at 96\% accuracy; a Vietnamese entity model fine-tuned from BERT reached \win{96\% F1}; a 20K-node asset graph links products to listings; and a distributed crawler I designed \win{doubled throughput} to 1,000+ pages an hour across 50+ marketplaces. I also started the company's open-source face-anti-spoofing. {\scriptsize\textcolor{emphasis}{Python · PyTorch · BERT · scikit-learn · Prophet · FAISS · Scrapy · Pub/Sub · BigQuery · Airflow · GCP}}
+
+  \item \pastjob{Software Developer (AI)}{Dai Phat Solutions}{Aug 2019 -- Mar 2021}
+  \textit{Camera AI --- vector search engine \& distributed inference; architect of the camera-AI product.} Recognising faces across many cameras needs a similarity lookup on every frame, and the first pipeline showed video three to five seconds late --- too slow for a security alert.
+  \begin{itemize}[leftmargin=1.1em,itemsep=1pt,topsep=2pt,parsep=0pt,after=\vspace{1pt}]
+    \item \win{Delay cut from 3--5\,s to 1\,s} across 16 cameras at 15 FPS each: I tuned FFmpeg decoding, moved JPEG coding to TurboJPEG, compressed arrays on the wire with Blosc and reused pre-allocated memory for vectors.
+    \item \win{Wrote the vector search engine} on FAISS: flat and IVF indexes with training, half-precision GPU indexes movable between GPU and CPU, persistence and de-duplication on insert; served over Kafka request-and-reply, with vectors in Redis.
+    \item \win{Optimised model inference.} I exported the detection and face-recognition models from PyTorch to TorchScript, ONNX Runtime and TensorRT, ran them in half precision, and batched frames from several cameras onto one GPU.
+    \item \win{Designed it as a distributed system.} Decoding, detection, embedding and search workers pass frames over Kafka, Pulsar and ZeroMQ, so capacity grows by adding workers and one failed worker does not stop a camera.
+    \item \win{92\% recognition accuracy over 1,000+ identities} removed 90\% of manual processing; incidents fell 40\% across 20+ clients.
+  \end{itemize}
+  {\scriptsize\textcolor{emphasis}{Python · PyTorch · RetinaFace · InsightFace · FAISS · TensorRT · ONNX Runtime · Kafka · Pulsar · ZeroMQ · Redis · FFmpeg · Docker}}
+
+  \item \pastjob{Full-stack Developer}{LogiGear Corporation}{Jun 2018 -- Mar 2019}
+  Built an Ethereum wallet and smart-contract application in Node.js and React.
+\end{itemize}
 
 \cvsection{Technical Skills}
 
-\skillrow{LLM systems}{multi-provider gateways with policy routing, continuous health probing and failover across OpenAI, Anthropic, Gemini, Bedrock, Azure and OpenRouter; open-weight models served on vLLM; token metering and cost reconciliation; prompt and agent orchestration with LangChain, Model Context Protocol clients and servers, agent memory; evaluation harnesses and regression gates in CI}
+\skillrow{LLM systems}{multi-provider gateways with policy routing, continuous health probing and failover across OpenAI, Anthropic, Gemini, Bedrock, Azure and OpenRouter; open-weight models served on vLLM; token metering and cost reconciliation; LangChain, MCP clients and servers, agent memory; evaluation harnesses and regression gates in CI}
 \skillrow{Retrieval \& vector search}{embeddings, hybrid keyword-and-vector search with rank fusion, cross-encoder re-ranking and fine-tuning, knowledge graphs (Graphiti); FAISS (IVF, GPU indexes), HNSW, Weaviate, Qdrant, FalkorDB}
 \skillrow{ML engineering \& serving}{PyTorch, YOLO, RetinaFace and InsightFace, BERT fine-tuning, scikit-learn; TensorRT, Triton, ONNX Runtime, TorchScript, OpenVINO and CoreML with dynamic batching and half precision; FFmpeg video pipelines; edge deployment on K3s}
-\skillrow{Languages \& backend}{Python (typed, async), Rust, TypeScript / Node.js, Java, SQL; FastAPI, SQLAlchemy 2, Pydantic, pytest, Tokio, Next.js / React; hexagonal architecture, CQRS, event sourcing, multi-tenancy, outbox and idempotency, PCI boundaries, OAuth / OIDC}
-\skillrow{Data, storage \& cloud}{PostgreSQL (Patroni HA, partitioning, schema per tenant), Redis, MongoDB, DynamoDB, DuckDB, Delta Lake; Kafka, PyFlink, PySpark, Airflow, BigQuery, Databricks; Kubernetes, Helm, Docker, Envoy, OpenTelemetry, Prometheus; AWS, Azure, GCP}
+\skillrow{Languages \& backend}{Python (typed, async), Rust, TypeScript / Node.js, Java, SQL; FastAPI, SQLAlchemy 2, Pydantic, pytest, Tokio, Next.js / React; hexagonal architecture, CQRS, event sourcing, multi-tenancy, outbox, idempotency, PCI boundaries, OAuth / OIDC}
+\skillrow{Data, storage \& cloud}{PostgreSQL (Patroni, partitioning, schema per tenant), Redis, MongoDB, DynamoDB, DuckDB, Delta Lake; Kafka, PyFlink, PySpark, Airflow, BigQuery, Databricks; Kubernetes, Helm, Docker, Envoy, OpenTelemetry, Prometheus; AWS, Azure, GCP}
 
 \cvsection{Education, Teaching \& Certifications}
 
-\skillrow{Education}{BSc Computer Science (High-Quality Program), Ton Duc Thang University, 2015--2019; researcher intern, NewAI Lab (2018)}
+\skillrow{Education}{BSc Computer Science (High-Quality Program), Ton Duc Thang University, 2015--2019; NewAI Lab research intern}
 \skillrow{Teaching \& speaking}{Design Patterns instructor, Ton Duc Thang University (2022); data-analysis mentor, MindX (2023); speaker, AI Workshop, FPT University (2025)}
 \skillrow{Certifications}{\href{https://www.credential.net/f16b9afc-1d7a-4427-b7e3-f0bf76cd75ae}{Google Cloud Technical Series --- AI Agents} (2025); \href{https://s3-us-west-2.amazonaws.com/udacity-printer/production/certificates/0ad10fbf-13db-4f96-b196-a108e3bff2b2.pdf}{AWS Machine Learning Foundations} (2022)}
 \skillrow{Languages}{English (advanced) --- the working language of my code, documentation and client work; Vietnamese (native)}
 
 \clearpage
+\fontsize{9.3pt}{11.3pt}\selectfont
+\justifying
 
 \cvsection{Projects \& Open Source --- References}
 
@@ -202,7 +188,7 @@
 
 \work{Lunaris}{\href{https://github.com/pilotspace/lunaris}{github.com/pilotspace/lunaris} · docs \href{https://pilotspace.github.io/lunaris/}{pilotspace.github.io/lunaris} · \textit{lunaris-memory} on crates.io, \textit{@pilotspace/lunaris} on npm}{An agent-memory engine built on Moon: ingestion, extraction, embeddings, hybrid search and re-ranking behind one API, with the embedding and re-ranking models running in-process so recall makes no network call. Recall across 100,000 documents per scope returns in 19--22\,ms at the median and under 25\,ms at P99 on a single shard; beyond 100,000 documents it is published as unvalidated. A CI gate scores evidence recall on LongMemEval-S on every retrieval change and fails the build when recall drops. I wrote that gate after finding its predecessor had never once run --- all 200 recorded executions were startup failures.}
 
-\work{laya-codex}{\href{https://github.com/pilotspace/laya-codex}{github.com/pilotspace/laya-codex} · model \href{https://huggingface.co/tindang/laya-code}{huggingface.co/tindang/laya-code}}{Ranked code retrieval for coding agents. The repository is split into chunks with tree-sitter (14 languages), keyword search finds candidates, and a cross-encoder re-ranker I fine-tuned on git history --- where a commit's changed code is the answer to its message --- orders them and places the code in the agent's first turn through hooks and the Model Context Protocol. On 60 paired tasks across 3 repositories the right files appeared in the first answer 88\% of the time, up from 73\%; tool calls per session fell from 5.9 to 2.3, session time by 19\% and cost by 14.8\%. On a second set of 60 new tasks the cost gain was not significant, and the README says so.}
+\work{laya-codex}{\href{https://github.com/pilotspace/laya-codex}{github.com/pilotspace/laya-codex} · model \href{https://huggingface.co/tindang/laya-code}{huggingface.co/tindang/laya-code}}{Ranked code retrieval for coding agents. The repository is split into chunks with tree-sitter (14 languages), keyword search finds candidates, and a cross-encoder re-ranker I fine-tuned on git history --- where a commit's changed code is the answer to its message --- orders them and places the code in the agent's first turn through hooks and MCP. On 60 paired tasks across 3 repositories the right files appeared in the first answer 88\% of the time, up from 73\%; tool calls per session fell from 5.9 to 2.3, session time by 19\% and cost by 14.8\%. On 60 further tasks the cost gain was not significant, and the README says so.}
 
 \work{Hydroa}{\href{https://github.com/pilotspace/hydroa}{github.com/pilotspace/hydroa}}{A multi-tenant LLM gateway: one OpenAI-compatible endpoint over OpenAI, Anthropic, Gemini, Bedrock, Azure and OpenRouter. Every row is scoped to a tenant, each tenant's provider keys are encrypted at rest, providers sit behind circuit breakers with health-aware fallback, and a cost ledger reconciles what was metered against what the provider billed.}
 
@@ -214,15 +200,15 @@
 
 \work{dpsutil \& the search-engine client}{\href{https://github.com/TinDang97/DPS_Util}{github.com/TinDang97/DPS\_Util} · \href{https://github.com/TinDang97/DPS_SearchEngine_Client}{github.com/TinDang97/DPS\_SearchEngine\_Client}}{The library and client behind the camera-AI product at Dai Phat (2019--2021): Kafka and Redis wrappers, Blosc array compression, TurboJPEG coding, a pre-allocated vector pool, and the client for the FAISS search service --- flat and IVF indexes, half-precision GPU indexes, GPU-to-CPU moves. 44 releases on PyPI.}
 
-\work{Also}{smaller and earlier work}{\textbf{Helios}, a Rust agent harness with 12 provider backends, a native Model Context Protocol client and server and sandboxed WebAssembly extensions (private, unreleased) · \textbf{Pilot Space}, an AI-augmented software-delivery platform (\href{https://github.com/pilotspace/pilot-space}{github.com/pilotspace/pilot-space}, MIT) · \textbf{fastapi-multi-tenant}, a multi-tenant FastAPI boilerplate (\href{https://github.com/TinDang97/fastapi-multi-tenant}{github.com/TinDang97/fastapi-multi-tenant}) · \textbf{Velos}, a GPU traffic microsimulation in Rust (\href{https://github.com/pilotspace/velos}{github.com/pilotspace/velos}) · \textbf{face-anti-spoofing}, started at Vietmoney (\href{https://github.com/vietmoney/face-anti-spoofing}{github.com/vietmoney/face-anti-spoofing}) · \textbf{face\_recognition}, RetinaFace and InsightFace (\href{https://github.com/TinDang97/face_recognition}{github.com/TinDang97/face\_recognition}).}
+\work{Also}{smaller and earlier work}{\textbf{Helios}, a Rust agent harness with 12 provider backends, a native MCP client and server and sandboxed WebAssembly extensions (private, unreleased) · \textbf{Pilot Space}, an AI-augmented software-delivery platform (\href{https://github.com/pilotspace/pilot-space}{github.com/pilotspace/pilot-space}, MIT) · \textbf{fastapi-multi-tenant}, a multi-tenant FastAPI boilerplate (\href{https://github.com/TinDang97/fastapi-multi-tenant}{github.com/TinDang97/fastapi-multi-tenant}) · \textbf{Velos}, a GPU traffic microsimulation in Rust (\href{https://github.com/pilotspace/velos}{github.com/pilotspace/velos}) · \textbf{face-anti-spoofing}, started at Vietmoney (\href{https://github.com/vietmoney/face-anti-spoofing}{github.com/vietmoney/face-anti-spoofing}) · \textbf{face\_recognition}, RetinaFace and InsightFace (\href{https://github.com/TinDang97/face_recognition}{github.com/TinDang97/face\_recognition}).}
 
 \cvsection{How I Evaluate}
 
-\begin{wins}
+\begin{itemize}[leftmargin=*,itemsep=1pt,topsep=1pt,parsep=0pt]
   \item \win{Gate quality in CI.} In Lunaris every change to retrieval is scored for evidence recall, and the build fails when recall drops.
   \item \win{Pair the tasks and state the interval.} The laya-codex benchmark runs the same 60 tasks with and without the tool, reports a 95\% confidence interval, and repeats on 60 new tasks.
   \item \win{Publish the result that goes against you.} ADD is published with its price, Moon lists the command families where it loses to Redis, and Lunaris marks everything beyond 100,000 documents as unvalidated.
   \item \win{Reconcile against an outside source.} At ClickAI I checked metered LLM cost against the providers' own bills, which is how a 30\% drift surfaced that no internal metric showed.
-\end{wins}
+\end{itemize}
 
 \end{document}
