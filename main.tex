@@ -56,14 +56,14 @@
 \newcommand{\win}[1]{\textbf{\textcolor{emphasis}{#1}}}
 
 % Portfolio entry: name, where to find it, then what it is and what it measures.
-\newcommand{\work}[3]{\par\vspace{5pt}\noindent\textbf{\textcolor{accent}{#1}} \textcolor{accent}{\textbullet} {\footnotesize #2}\par\nobreak\vspace{1pt}\noindent #3\par}
+\newcommand{\work}[3]{\par\vspace{7pt}\noindent\textbf{\textcolor{accent}{#1}} \textcolor{accent}{\textbullet} {\footnotesize #2}\par\nobreak\vspace{1pt}\noindent #3\par}
 
 \addbibresource{sample.bib}
 
 \begin{document}
 \fontsize{9.6pt}{11.6pt}\selectfont
 \name{Tin Dang Huynh Trung}
-\tagline{Senior Software Engineer}
+\tagline{Technical Architect}
 % Photo is opt-out, so both variants build from this one source:
 %   pdflatex main.tex                                       -> with photo
 %   pdflatex -jobname=main-nophoto "\def\nophoto{1}\input{main.tex}"  -> without
@@ -84,7 +84,7 @@
 \textit{\textcolor{accent}{I'm a low-key developer: a cup of coffee, a hard problem, and something useful at the end of it.}}
 
 \smallskip
-Senior software engineer, ten years in --- mostly Python, plus Rust and TypeScript. I've had machine learning in production since 2019: camera analytics and a vector search engine I wrote myself, then fintech pricing and language models, and for the last two years the infrastructure under LLM products --- gateways, routing and failover, retrieval, agent memory, and metering that reconciles against what providers actually bill. I've been CTO of an AI startup, led teams of up to fourteen, and still keep my hands on the hard parts. I'd rather measure than claim, so retrieval quality is gated in CI and inference is tuned against a P95. An agent writes most of my code now; deciding whether it's correct is still my job, and I published the method I use for that.
+Technical architect, ten years in software --- mostly Python, plus Rust and TypeScript. I've had machine learning in production since 2019: camera analytics and a vector search engine I wrote myself, then fintech pricing and language models, and for the last two years the infrastructure under LLM products --- gateways, routing and failover, retrieval, agent memory, and metering that reconciles against what providers actually bill. I've been CTO of an AI startup, led teams of up to fourteen, and still keep my hands on the hard parts. I'd rather measure than claim, so retrieval quality is gated in CI and inference is tuned against a P95. An agent writes most of my code now; deciding whether it's correct is still my job, and I published the method I use for that.
 \end{minipage}
 
 \cvsection{Professional Experience}
@@ -93,7 +93,7 @@ Senior software engineer, ten years in --- mostly Python, plus Rust and TypeScri
 
 \begin{minipage}{\linewidth}
 \justifying
-I architect and lead client platforms across Vietnam and Myanmar --- transport, fintech, real estate and investment data for Yoma Group, Yoma Bank, Wave Money, Trustonic and VinaCapital --- and wrote the company's engineering career ladder.
+I architect and lead client platforms across Vietnam and Myanmar --- transport, fintech, real estate and investment data for clients including Yoma Bank and VinaCapital --- and wrote the company's engineering career ladder.
 \end{minipage}
 
 \begin{itemize}[itemsep=4pt,topsep=3pt,parsep=0pt]
@@ -101,12 +101,12 @@ I architect and lead client platforms across Vietnam and Myanmar --- transport, 
   40 camera streams are more video than a city network can carry, so I moved inference to the roadside and ship only events. \win{85\,ms P95 inference:} YOLO on TensorRT in half precision behind Triton with dynamic batching, falling back to ONNX Runtime where no GPU is present. \win{75\% less backhaul,} since H.265 transcoding and frame filtering also run at the edge; events cross mutually authenticated Kafka into PyFlink, load-tested to \win{71K events a second}.
   \stack{Python · FastAPI · YOLO · TensorRT · Triton · ONNX Runtime · Kafka · PyFlink · K3s · ArgoCD · DuckDB}
 
-  \item \proj{Estate-finance platform \& PCI boundary}{Yoma Group, Wave Money --- architect \& sole engineer, Jul -- Sep 2026}
+  \item \proj{Estate-finance platform \& PCI boundary}{real-estate group --- architect \& sole engineer, Jul -- Sep 2026}
   I replaced a live PHP/Laravel system whose balances nobody could audit with \win{one append-only double-entry ledger}: thirty modules in eight releases over four weeks, with \win{235 legacy business rules graded} against it before any customer moved. \win{PCI scope is one service} --- cardholder data has its own service, database and network, enforced by the build.
   \stack{Python 3.12 · FastAPI · async SQLAlchemy 2 · PostgreSQL (schema per tenant) · Redis · 2C2P · AWS ECS · Envoy}
 
   \item \proj{Also delivered}{data, migration and payments}
-  A Databricks lakehouse for VinaCapital that cut reporting \win{from two days to two hours}; the rollback path of Trustonic's per-customer IoT migration, where a rehearsal showed the document store, cache and object archive did not revert with Postgres; 2C2P card payments for Wave Money; and a microfinance lending MVP for Yoma Bank in Java 21 and Spring Boot.
+  A Databricks lakehouse for VinaCapital that cut reporting \win{from two days to two hours}; the rollback path of an IoT device platform's per-customer migration, where a rehearsal showed the document store, cache and object archive did not revert with Postgres; 2C2P card payments for a mobile-wallet product; and a microfinance lending MVP for Yoma Bank in Java 21 and Spring Boot.
 \end{itemize}
 
 \divider
@@ -177,7 +177,7 @@ My own open-source line, each project published with its benchmark: \win{Lunaris
 \skillrow{Languages}{English (advanced) --- the working language of my code, documentation and client work; Vietnamese (native)}
 
 \clearpage
-\fontsize{9.3pt}{11.3pt}\selectfont
+\normalsize
 \justifying
 
 \cvsection{Projects \& Open Source --- References}
@@ -200,15 +200,6 @@ My own open-source line, each project published with its benchmark: \win{Lunaris
 
 \work{dpsutil \& the search-engine client}{\href{https://github.com/TinDang97/DPS_Util}{github.com/TinDang97/DPS\_Util} · \href{https://github.com/TinDang97/DPS_SearchEngine_Client}{github.com/TinDang97/DPS\_SearchEngine\_Client}}{The library and client behind the camera-AI product at Dai Phat (2019--2021): Kafka and Redis wrappers, Blosc array compression, TurboJPEG coding, a pre-allocated vector pool, and the client for the FAISS search service --- flat and IVF indexes, half-precision GPU indexes, GPU-to-CPU moves. 44 releases on PyPI.}
 
-\work{Also}{smaller and earlier work}{\textbf{Helios}, a Rust agent harness with 12 provider backends, a native MCP client and server and sandboxed WebAssembly extensions (private, unreleased) · \textbf{Pilot Space}, an AI-augmented software-delivery platform (\href{https://github.com/pilotspace/pilot-space}{github.com/pilotspace/pilot-space}, MIT) · \textbf{fastapi-multi-tenant}, a multi-tenant FastAPI boilerplate (\href{https://github.com/TinDang97/fastapi-multi-tenant}{github.com/TinDang97/fastapi-multi-tenant}) · \textbf{Velos}, a GPU traffic microsimulation in Rust (\href{https://github.com/pilotspace/velos}{github.com/pilotspace/velos}) · \textbf{face-anti-spoofing}, started at Vietmoney (\href{https://github.com/vietmoney/face-anti-spoofing}{github.com/vietmoney/face-anti-spoofing}) · \textbf{face\_recognition}, RetinaFace and InsightFace (\href{https://github.com/TinDang97/face_recognition}{github.com/TinDang97/face\_recognition}).}
-
-\cvsection{How I Evaluate}
-
-\begin{itemize}[leftmargin=*,itemsep=1pt,topsep=1pt,parsep=0pt]
-  \item \win{Gate quality in CI.} In Lunaris every change to retrieval is scored for evidence recall, and the build fails when recall drops.
-  \item \win{Pair the tasks and state the interval.} The laya-codex benchmark runs the same 60 tasks with and without the tool, reports a 95\% confidence interval, and repeats on 60 new tasks.
-  \item \win{Publish the result that goes against you.} ADD is published with its price, Moon lists the command families where it loses to Redis, and Lunaris marks everything beyond 100,000 documents as unvalidated.
-  \item \win{Reconcile against an outside source.} At ClickAI I checked metered LLM cost against the providers' own bills, which is how a 30\% drift surfaced that no internal metric showed.
-\end{itemize}
+\work{Also}{smaller and earlier work}{\textbf{Helios}, a Rust agent harness with 12 provider backends, a native MCP client and server and sandboxed WebAssembly extensions (private, unreleased) · \textbf{Pilot Space}, an AI-augmented software-delivery platform (\href{https://github.com/pilotspace/pilot-space}{github.com/\allowbreak pilotspace/\allowbreak pilot-space}, MIT) · \textbf{fastapi-multi-tenant}, a multi-tenant FastAPI boilerplate (\href{https://github.com/TinDang97/fastapi-multi-tenant}{github.com/\allowbreak TinDang97/\allowbreak fastapi-multi-tenant}) · \textbf{Velos}, a GPU traffic microsimulation in Rust (\href{https://github.com/pilotspace/velos}{github.com/\allowbreak pilotspace/\allowbreak velos}) · \textbf{face-anti-spoofing}, started at Vietmoney (\href{https://github.com/vietmoney/face-anti-spoofing}{github.com/\allowbreak vietmoney/\allowbreak face-anti-spoofing}) · \textbf{face\_recognition}, RetinaFace and InsightFace (\href{https://github.com/TinDang97/face_recognition}{github.com/\allowbreak TinDang97/\allowbreak face\_recognition}).}
 
 \end{document}
