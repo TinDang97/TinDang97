@@ -98,7 +98,7 @@ I architect and lead client platforms across Vietnam and Myanmar --- transport, 
 
 \begin{itemize}[itemsep=4pt,topsep=3pt,parsep=0pt]
   \item \proj{Real-time ML serving at the edge}{intelligent transport --- architect \& sole engineer, Sep 2025 -- Mar 2026}
-  400 camera streams are more video than a city network can carry, so I moved inference to the roadside and ship only events. \win{85\,ms P95 inference:} YOLO on TensorRT in half precision behind Triton with dynamic batching, falling back to ONNX Runtime where no GPU is present. \win{75\% less backhaul} (2.4\,Gbps to 600\,Mbps), since H.265 transcoding and frame filtering also run at the edge; events cross mutually authenticated Kafka into PyFlink, load-tested to \win{71K events a second}.
+  40 camera streams are more video than a city network can carry, so I moved inference to the roadside and ship only events. \win{85\,ms P95 inference:} YOLO on TensorRT in half precision behind Triton with dynamic batching, falling back to ONNX Runtime where no GPU is present. \win{75\% less backhaul,} since H.265 transcoding and frame filtering also run at the edge; events cross mutually authenticated Kafka into PyFlink, load-tested to \win{71K events a second}.
   \stack{Python · FastAPI · YOLO · TensorRT · Triton · ONNX Runtime · Kafka · PyFlink · K3s · ArgoCD · DuckDB}
 
   \item \proj{Estate-finance platform \& PCI boundary}{Yoma Group, Wave Money --- architect \& sole engineer, Jul -- Sep 2026}
